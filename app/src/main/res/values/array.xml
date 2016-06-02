@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dashBoardNames">
+        <item>Events</item>
+        <item>Media</item>
+        <item>Matches</item>
+        <item>Participants</item>
+    </string-array>
+
+    <array name="dashBoardImages">
+        <item>@drawable/events</item>
+        <item>@drawable/media</item>
+        <item>@drawable/matches</item>
+        <item>@drawable/participants</item>
+    </array>
+
+    <array name="navDrawerImages">
+        <item>@drawable/ic_bookmark_black_24dp</item>
+        <item>@drawable/ic_photo_library_black_24dp</item>
+        <item>@drawable/ic_matches_24dp</item>
+        <item>@drawable/ic_person_black_24dp</item>
+    </array>
+
+</resources>

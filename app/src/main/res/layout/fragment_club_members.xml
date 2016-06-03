@@ -4,16 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="44dp"
-        layout="@layout/recyclerview" />
 
     <include
-        android:layout_width="wrap_content"
+        layout="@layout/recyclerview"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        layout="@layout/layout_last_updated" />
+        android:layout_gravity="center_horizontal" />
+
+
+    <!--<include-->
+        <!--layout="@layout/layout_last_updated"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+
 </RelativeLayout>

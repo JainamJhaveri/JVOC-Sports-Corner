@@ -24,7 +24,6 @@ public class DashboardFragment extends Fragment {
 
 
     public DashboardFragment() {
-        // Required empty public constructor
     }
 
 
@@ -33,8 +32,7 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-                R.layout.recyclerview, container, false);
+        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recyclerview, container, false);
         ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
@@ -57,10 +55,12 @@ public class DashboardFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Log.e(TAG, "onClick: "+getAdapterPosition() );
-//                    Context context = v.getContext();
-//                    Intent intent = new Intent(context, DetailActivity.class);
-//                    intent.putExtra(DetailActivity.EXTRA_POSITION, getAdapterPosition());
-//                    context.startActivity(intent);
+//                    switch (getAdapterPosition()){
+//                        case 0:
+//
+//                    }
+
+
                 }
             });
         }

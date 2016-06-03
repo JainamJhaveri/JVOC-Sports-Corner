@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="@dimen/md_keylines">
+
+    <RelativeLayout
+        android:id="@+id/ll_clubmem_topline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/list_mem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="@dimen/article_subheading"
+            tools:text="Abhishek Parikh" />
+
+        <TextView
+            android:id="@+id/list_membership_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="@dimen/article_subheading"
+            tools:text="A-01" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_clubmem_topline">
+
+        <TextView
+            android:id="@+id/list_mem_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Male"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/medium_grey"
+            android:textSize="@dimen/list_body" />
+
+        <TextView
+            android:id="@+id/list_mem_bdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:text="01-01-1995"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/medium_grey"
+            android:textSize="@dimen/list_body" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

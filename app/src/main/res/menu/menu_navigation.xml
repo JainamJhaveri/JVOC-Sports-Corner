@@ -4,10 +4,12 @@
         android:id="@+id/nav_group1"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/dashboard_menu"
             android:icon="@drawable/ic_home_black_24dp"
             android:tint="@color/button_grey"
             android:title="Dashboard" />
         <item
+            android:id="@+id/clubmembers_menu"
             android:icon="@drawable/ic_group_black_24dp"
             android:tint="@color/button_grey"
             android:title="Club Members" />
@@ -16,10 +18,12 @@
         android:id="@+id/nav_group2"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/events_menu"
             android:icon="@drawable/ic_bookmark_black_24dp"
             android:tint="@color/button_grey"
             android:title="Events" />
         <item
+            android:id="@+id/media_menu"
             android:icon="@drawable/ic_photo_library_black_24dp"
             android:tint="@color/button_grey"
             android:title="Media" />
@@ -28,10 +32,12 @@
         android:id="@+id/nav_group3"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/matches_menu"
             android:icon="@drawable/ic_matches_24dp"
             android:tint="@color/button_grey"
             android:title="Matches" />
         <item
+            android:id="@+id/viewparticipants_menu"
             android:icon="@drawable/ic_person_black_24dp"
             android:tint="@color/button_grey"
             android:title="View Participants" />

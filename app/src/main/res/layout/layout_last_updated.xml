@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/md_keylines"
+    android:background="@color/light_grey"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/list_mem_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textSize="@dimen/list_body"
+            android:text="Last Updated On: " />
+
+        <TextView
+            android:id="@+id/list_mem_bdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/list_body"
+            android:text="06-06-2016" />
+
+
+
+</RelativeLayout>

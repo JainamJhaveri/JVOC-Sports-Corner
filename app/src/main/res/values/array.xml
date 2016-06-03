@@ -21,4 +21,50 @@
         <item>@drawable/ic_person_black_24dp</item>
     </array>
 
+    <string-array name="mem_names">
+        <item>Abhishek Parikh</item>
+        <item>Jainam Jhaveri</item>
+        <item>Varun Raval</item>
+        <item>Harsh Shah</item>
+        <item>Jivan Shah</item>
+        <item>Digvijay Chauhan</item>
+        <item>Heet Jhaveri</item>
+        <item>Rushi Jhaveri</item>
+    </string-array>
+
+    <string-array name="membership_nos">
+        <item>A-01</item>
+        <item>J-38</item>
+        <item>C-01</item>
+        <item>V-21</item>
+        <item>D-101</item>
+        <item>A-01</item>
+        <item>J-38</item>
+        <item>J-38</item>
+
+    </string-array>
+
+    <string-array name="mem_genders">
+        <item>Male</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Male</item>
+        <item>Male</item>
+    </string-array>
+
+    <string-array name="mem_bdates">
+        <item>01-01-1953</item>
+        <item>04-05-1983</item>
+        <item>01-01-1993</item>
+        <item>01-01-1983</item>
+        <item>11-11-1954</item>
+        <item>01-02-1945</item>
+        <item>01-01-1978</item>
+        <item>01-01-1991</item>
+    </string-array>
+
+
 </resources>

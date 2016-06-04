@@ -1,13 +1,9 @@
-package com.rishabhjain.jvocsportscorner.ClubMembers_Adapter_VH;
+package com.rishabhjain.jvocsportscorner.ClubMembers_AdVh;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
-import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;

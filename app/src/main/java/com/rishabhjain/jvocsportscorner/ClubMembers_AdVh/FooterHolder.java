@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.ClubMembers_Adapter_VH;
+package com.rishabhjain.jvocsportscorner.ClubMembers_AdVh;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

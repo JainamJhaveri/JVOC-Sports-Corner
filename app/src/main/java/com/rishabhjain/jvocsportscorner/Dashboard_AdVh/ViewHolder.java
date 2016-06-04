@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.Dashboard_Adapter_VH;
+package com.rishabhjain.jvocsportscorner.Dashboard_AdVh;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,6 +14,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         private final String TAG = this.getClass().getSimpleName();
         public ImageView picture;
         public TextView name;
+
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.layout_dashboard, parent, false));
             picture = (ImageView) itemView.findViewById(R.id.tile_picture);
@@ -24,6 +25,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                     Log.e(TAG, "onClick: "+getAdapterPosition() );
                 }
             });
+        }
+
+        public void bind(ItemModel itemModel){
+            name.setText(itemModel.getName());
+            picture.setImageDrawable(itemModel.getPicture());
         }
 
 

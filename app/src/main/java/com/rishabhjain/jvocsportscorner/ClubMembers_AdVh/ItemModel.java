@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.ClubMembers_Adapter_VH;
+package com.rishabhjain.jvocsportscorner.ClubMembers_AdVh;
 
 /**
  * Created by jainu on 4/6/16.

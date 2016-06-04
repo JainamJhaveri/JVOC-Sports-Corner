@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?android:attr/selectableItemBackground"
-    android:padding="@dimen/tile_padding">
+    android:padding="@dimen/port_tile_padding">
 
     <ImageView
         android:id="@+id/tile_picture"

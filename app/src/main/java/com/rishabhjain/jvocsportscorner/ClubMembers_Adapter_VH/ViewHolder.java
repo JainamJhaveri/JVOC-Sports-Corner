@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.rishabhjain.jvocsportscorner.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, mem_no, gender, bdate;
+        private final TextView name, mem_no, gender, bdate;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.item_club_members, parent, false));
@@ -17,4 +17,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
             gender = (TextView) itemView.findViewById(R.id.list_mem_gender);
             bdate = (TextView) itemView.findViewById(R.id.list_mem_bdate);
         }
+
+        public void bind(ItemModel itemModel){
+            name.setText(itemModel.getName());
+            mem_no.setText(itemModel.getMem_no());
+            gender.setText(itemModel.getGender());
+            bdate.setText(itemModel.getBdate());
+        }
+
     }

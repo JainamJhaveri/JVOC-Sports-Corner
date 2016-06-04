@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         title = getSPTitle(this);
-        addDashboardFragment(savedInstanceState);
+        addInitialDashboardFragment(savedInstanceState);
 
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setNavigationView();
     }
 
-    private void addDashboardFragment(Bundle savedInstanceState) {
+    private void addInitialDashboardFragment(Bundle savedInstanceState) {
         if( savedInstanceState == null) {
             if (fragment == null) {
                 fragment = new DashboardFragment();

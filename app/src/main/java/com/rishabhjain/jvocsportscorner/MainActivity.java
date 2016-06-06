@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     Fragment fragment;
     private String title;
+    private static MainActivity activity;
+
+    public static MainActivity getMainAcInstance(){
+        return activity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         setMenuIconInActionBar();
         setNavigationView();
+        this.activity = this;
     }
 
     private void addInitialDashboardFragment(Bundle savedInstanceState) {
@@ -56,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-            indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.white,getTheme()));
+            if (indicator != null) {
+                indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.white,getTheme()));
+            }
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -83,15 +91,18 @@ public class MainActivity extends AppCompatActivity {
                         mDrawerLayout.closeDrawers();
                         switch (menuItem.getItemId()){
                             case R.id.dashboard_menu:
-                                Log.e(TAG, "onNavigationItemSelected: Dashboard Menu" );
                                 title = "Dashboard";
                                 fragment = new DashboardFragment();
                                 break;
                             case R.id.clubmembers_menu:
-                                Log.e(TAG, "onNavigationItemSelected: ClubMembersFragment Menu" );
                                 title = "Club Members";
                                 fragment = new ClubMembersFragment();
                                 break;
+                            case R.id.events_menu:
+                                title = "Events";
+                                fragment = new EventsFragment();
+                                break;
+
                         }
                         setSPTitle(getApplicationContext(), title);
                         setTitle(getSPTitle(getApplicationContext()));

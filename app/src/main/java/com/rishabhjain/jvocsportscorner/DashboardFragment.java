@@ -19,10 +19,6 @@ import com.rishabhjain.jvocsportscorner.Dashboard_AdVh.ItemModel;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DashboardFragment extends Fragment {
 
     private String names[];
@@ -62,7 +58,7 @@ public class DashboardFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
 
-        int tilePadding = getResources().getDimensionPixelSize(R.dimen.port_tile_padding);
+        int tilePadding;
         int tiles_per_row;
         if( getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             tiles_per_row = 2;

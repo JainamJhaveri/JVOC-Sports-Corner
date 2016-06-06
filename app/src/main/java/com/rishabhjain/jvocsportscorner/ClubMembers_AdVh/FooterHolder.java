@@ -8,9 +8,9 @@ import android.widget.TextView;
 import com.rishabhjain.jvocsportscorner.R;
 
 public class FooterHolder extends RecyclerView.ViewHolder {
-        public TextView tv_updated_on;
+        TextView tv_updated_on;
 
-        public FooterHolder(LayoutInflater inflater, ViewGroup parent) {
+        FooterHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.layout_last_updated, parent, false));
             tv_updated_on = (TextView) itemView.findViewById(R.id.tv_updated_on);
         }

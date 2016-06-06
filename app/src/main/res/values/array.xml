@@ -56,15 +56,41 @@
     </string-array>
 
     <string-array name="mem_bdates">
-        <item>01-01-1953</item>
-        <item>04-05-1983</item>
-        <item>01-01-1993</item>
-        <item>01-01-1983</item>
-        <item>11-11-1954</item>
-        <item>01-02-1945</item>
-        <item>01-01-1978</item>
-        <item>01-01-1991</item>
+        <item>01&#8211;01&#8211;1953</item>
+        <item>04&#8211;05&#8211;1983</item>
+        <item>01&#8211;01&#8211;1993</item>
+        <item>01&#8211;01&#8211;1983</item>
+        <item>11&#8211;11&#8211;1954</item>
+        <item>01&#8211;02&#8211;1945</item>
+        <item>01&#8211;01&#8211;1978</item>
+        <item>01&#8211;01&#8211;1991</item>
     </string-array>
 
+    <!--eventNames, eventVenues, eventDates, eventTimes, eventParticipants-->
+
+    <string-array name="eventNames">
+        <item>Indoor Tournament</item>
+        <item>Night Cricket</item>
+    </string-array>
+
+    <string-array name="eventVenues">
+        <item>JVOC Sports Floor No. 2</item>
+        <item>JVOC Courtyard Ground Floor</item>
+    </string-array>
+
+    <string-array name="eventDates">
+        <item>06&#8211;06&#8211;2016</item>
+        <item>06&#8211;06&#8211;2016</item>
+    </string-array>
+
+    <string-array name="eventTimes">
+        <item>09:00 a.m. to 4:00 p.m.</item>
+        <item>5:00 p.m. to 12:00 p.m.</item>
+    </string-array>
+
+    <string-array name="eventTotalParticipants">
+        <item>100</item>
+        <item>120</item>
+    </string-array>
 
 </resources>

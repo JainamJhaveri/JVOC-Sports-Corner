@@ -14,11 +14,11 @@ public class ItemModel {
         this.picture = picture;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public Drawable getPicture() {
+    Drawable getPicture() {
         return picture;
     }
 }

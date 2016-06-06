@@ -1,7 +1,6 @@
 package com.rishabhjain.jvocsportscorner.Events_AdVh;
 
 import android.content.DialogInterface;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rishabhjain.jvocsportscorner.MainActivity;
 import com.rishabhjain.jvocsportscorner.R;
@@ -22,7 +20,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     ViewGroup parent;
     TextView clicked_event_name, clicked_date;
 
-        // inflate the item_event and not fragment_events because the textviews referenced are a part of item_event and not fragment_events
+    // inflate the item_event and not fragment_events because the textviews referenced are a part of item_event and not fragment_events
     ViewHolder(LayoutInflater inflater, ViewGroup parent) {
         super(inflater.inflate(R.layout.item_event, parent, false));
         event_name = (TextView) itemView.findViewById(R.id.event_name);

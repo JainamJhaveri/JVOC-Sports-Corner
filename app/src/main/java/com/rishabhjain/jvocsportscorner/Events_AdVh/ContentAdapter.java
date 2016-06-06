@@ -22,7 +22,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final ItemModel itemModel = models.get(position);
+        ItemModel itemModel = models.get(position);
         holder.bind(itemModel);
     }
 

@@ -11,20 +11,20 @@
         android:layout_height="@dimen/tile_height"
         android:scaleType="centerCrop"
         android:src="@drawable/events"
-        />
+        android:contentDescription="Dashboard Image Background" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/tile_height"
         android:alpha="0.3"
-        android:background="@color/button_grey" />
+        android:background="@color/button_grey"
+        android:contentDescription="Gray Image Background" />
 
     <TextView
         android:id="@+id/tile_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tile_height"
         android:layout_gravity="center"
-        android:paddingRight="10dp"
         android:gravity="center"
         android:text="@string/item_title"
         android:textColor="@color/white"

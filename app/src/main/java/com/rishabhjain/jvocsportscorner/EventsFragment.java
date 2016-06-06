@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,20 @@ public class EventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_events, container, false);
+        View view = null;
+        boolean landscape = getResources().getBoolean(R.bool.isLandscape);
+        if(landscape){
+            Log.e(TAG, "onCreateView: landscape" );
+            if( view != null )
+                view.invalidate();
+        }
+        else{
+            Log.e(TAG, "onCreateView: portrait" );
+            if( view != null )
+                view.invalidate();
+        }
+
+        view = inflater.inflate(R.layout.fragment_events, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         adapter = new ContentAdapter(models);
         recyclerView.setAdapter(adapter);

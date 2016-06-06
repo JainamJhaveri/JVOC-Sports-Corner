@@ -1,5 +1,6 @@
 package com.rishabhjain.jvocsportscorner;
 
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
@@ -8,16 +9,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
-import static com.rishabhjain.jvocsportscorner.MyPreferences.*;
+import static com.rishabhjain.jvocsportscorner.MyPreferences.getSPTitle;
+import static com.rishabhjain.jvocsportscorner.MyPreferences.setSPTitle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+//    private final String TAG = this.getClass().getSimpleName();
     private DrawerLayout mDrawerLayout;
     Fragment fragment;
     private String title;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         setMenuIconInActionBar();
         setNavigationView();
-        this.activity = this;
+        activity = this;
     }
 
     private void addInitialDashboardFragment(Bundle savedInstanceState) {

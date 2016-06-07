@@ -53,25 +53,17 @@ public class EventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = null;
-        boolean landscape = getResources().getBoolean(R.bool.isLandscape);
-        if(landscape){
-            Log.e(TAG, "onCreateView: landscape" );
-            if( view != null )
-                view.invalidate();
-        }
-        else{
-            Log.e(TAG, "onCreateView: portrait" );
-            if( view != null )
-                view.invalidate();
-        }
-
-        view = inflater.inflate(R.layout.fragment_events, container, false);
+        View view = inflater.inflate(R.layout.fragment_events, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         adapter = new ContentAdapter(models);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

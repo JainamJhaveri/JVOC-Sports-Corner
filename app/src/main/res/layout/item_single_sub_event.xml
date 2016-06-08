@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <TextView
+        android:id="@+id/sub_event_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="9.5"
+        android:clickable="true"
+        android:gravity="top|left"
+        android:padding="2dp"
+        android:layout_marginLeft="8dp"
+        android:text="T.T. Senior Singles Males"
+        android:textSize="19sp" />
+
+    <TextView
+        android:id="@+id/no_of_participants"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:background="@drawable/circular_bg"
+        android:gravity="center"
+        android:text="108"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/delete_sub_event"
+        android:layout_width="45dp"
+        android:layout_height="match_parent"
+        android:padding="5dp" />
+
+
+</LinearLayout>

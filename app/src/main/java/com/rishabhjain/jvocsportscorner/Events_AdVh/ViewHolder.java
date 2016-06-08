@@ -56,22 +56,11 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public void onClick(View v) {
         if(v.getId() == R.id.action_button){
             parent = (ViewGroup) v.getParent();
-            if( parent == null)
-                Log.e(TAG, "onClick: parent null" );
-            else
-                Log.e(TAG, "onClick: "+parent );
-
             clicked_event_name = (TextView) parent.findViewById(R.id.event_name);
-            Log.e(TAG, "onClick: "+clicked_event_name );
-            if( clicked_event_name == null){
-                getReferences();
-            }
             clicked_date = (TextView) parent.findViewById(R.id.card_date);
-            Log.e(TAG, "onClick: "+clicked_date);
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.getMainAcInstance());
-            dialog.setTitle("Notify")
-                    .setMessage("Surely notify all participants ? ");
+            dialog.setTitle("Notify").setMessage("Surely notify all participants ? ");
             dialog.setPositiveButton("Notify all", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {

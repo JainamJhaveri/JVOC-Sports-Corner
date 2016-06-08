@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner;
+package com.rishabhjain.jvocsportscorner.General;
 
 import android.content.Context;
 import android.content.res.TypedArray;

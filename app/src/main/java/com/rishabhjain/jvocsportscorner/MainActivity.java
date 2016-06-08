@@ -12,8 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import static com.rishabhjain.jvocsportscorner.MyPreferences.getSPTitle;
-import static com.rishabhjain.jvocsportscorner.MyPreferences.setSPTitle;
+import static com.rishabhjain.jvocsportscorner.General.MyPreferences.getSPTitle;
+import static com.rishabhjain.jvocsportscorner.General.MyPreferences.setSPTitle;
 
 public class MainActivity extends AppCompatActivity {
 

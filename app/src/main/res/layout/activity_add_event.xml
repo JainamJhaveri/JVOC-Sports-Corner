@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rishabhjain.jvocsportscorner.AddEvent">
+
+    <include layout="@layout/toolbarlayout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_event_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:hint="Event Name"
+                android:padding="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:textColor="@color/dark_grey" />
+
+            <EditText
+                android:id="@+id/et_event_venue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:hint="Venue"
+                android:padding="@dimen/activity_vertical_margin"
+                android:singleLine="true"
+                android:textColor="@color/dark_grey" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:gravity="center|left"
+                    android:labelFor="@+id/dateTV"
+                    android:text="Event Date :"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/dateTV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6.5"
+                    android:clickable="true"
+                    android:gravity="center|left"
+                    android:onClick="eventDateClicked"
+                    android:padding="5dp"
+                    android:text="25-06-2016"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/editDate"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:onClick="eventDateClicked" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:gravity="center|left"
+                    android:labelFor="@+id/startTimeTV"
+                    android:text="Start Time :"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/startTimeTV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6.5"
+                    android:clickable="true"
+                    android:gravity="center|left"
+                    android:onClick="startTimeClicked"
+                    android:padding="5dp"
+                    android:text="09:00 AM"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/startTimeEdit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:onClick="startTimeClicked"
+                    android:padding="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:gravity="center|left"
+                    android:labelFor="@+id/endTimeTV"
+                    android:text="Event Date :"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/endTimeTV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6.5"
+                    android:clickable="true"
+                    android:gravity="center|left"
+                    android:onClick="endTimeClicked"
+                    android:padding="5dp"
+                    android:text="04:00 PM"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/endTimeEdit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:onClick="endTimeClicked"
+                    android:padding="25dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="Unique Participants: "
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/no_of_participants"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circular_green_bg"
+                    android:gravity="center"
+                    android:text="108"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dark_grey" />
+
+            <include
+                layout="@layout/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/blue"
+                android:onClick="eventDoneClicked"
+                android:padding="@dimen/activity_vertical_margin"
+                android:text="Done"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

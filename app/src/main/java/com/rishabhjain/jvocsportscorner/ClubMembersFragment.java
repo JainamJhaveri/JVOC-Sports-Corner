@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.rishabhjain.jvocsportscorner.ClubMembers_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.ClubMembers_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;

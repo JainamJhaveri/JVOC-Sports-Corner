@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?android:attr/selectableItemBackground"
-    android:padding="@dimen/port_tile_padding">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scaleType="centerCrop">
 
-    <ImageView
-        android:id="@+id/tile_picture"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tile_height"
-        android:scaleType="centerCrop"
-        android:src="@drawable/events"
-        android:contentDescription="Dashboard Image Background" />
+        android:layout_height="wrap_content"
+        android:padding="2dp">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tile_height"
-        android:alpha="0.3"
-        android:background="@color/button_grey"
-        android:contentDescription="Gray Image Background" />
+        <!--<ImageView-->
+        <!--android:id="@+id/tile_picture"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:contentDescription="Dashboard Banner Background"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@drawable/jvoc" />-->
 
-    <TextView
-        android:id="@+id/tile_title"
+        <!--<ImageView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:alpha="0.3"-->
+        <!--android:background="@color/button_grey"-->
+        <!--android:contentDescription="Gray Image Background" />-->
+
+        <TextView
+            android:id="@+id/tv_app_name_banner"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="JVOC Sports Corner"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+
+    </RelativeLayout>
+
+
+    <include
+        layout="@layout/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tile_height"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/item_title"
-        android:textColor="@color/white"
-        android:textSize="@dimen/article_titles" />
-</RelativeLayout>
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

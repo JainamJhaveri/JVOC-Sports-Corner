@@ -7,25 +7,38 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.rishabhjain.jvocsportscorner.Events_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.Events_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.General.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_ADDEVENTTITLE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_ENDTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_EVENTDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_EVENTVENUE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_STARTTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_UNIQUEPARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
+
 public class EventsFragment extends Fragment {
 
-    private static final int REQ_CODE = 101;
-    private static final int EVENT_ADDED = 100;
     private final String TAG = this.getClass().getSimpleName();
     RecyclerView recyclerView;
     ContentAdapter adapter;
@@ -53,7 +66,14 @@ public class EventsFragment extends Fragment {
         int id = item.getItemId();
         if( id == R.id.add_new_event_menu){
             Intent i = new Intent(this.getActivity(), AddEvent.class);
-            startActivityForResult(i, REQ_CODE);
+            i.putExtra(TAG_EVENTNAME, DEFAULT_EVENTNAME);
+            i.putExtra(TAG_EVENTVENUE, DEFAULT_EVENTVENUE);
+            i.putExtra(TAG_EVENTDATE, DEFAULT_EVENTDATE);
+            i.putExtra(TAG_STARTTIME, DEFAULT_STARTTIME);
+            i.putExtra(TAG_ENDTIME, DEFAULT_ENDTIME);
+            i.putExtra(TAG_UNIQUEPARTICIPANTS, DEFAULT_UNIQUEPARTICIPANTS);
+            i.putExtra(TAG_ADDEVENTTITILE, DEFAULT_ADDEVENTTITLE);
+            startActivityForResult(i, ADD_EVENT_REQ_CODE);
             return true;
         }
         return false;
@@ -62,10 +82,10 @@ public class EventsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if( resultCode == EVENT_ADDED){
-            if( requestCode == REQ_CODE){
+            if( requestCode == ADD_EVENT_REQ_CODE){
                 // recyclerview should be updated here
             }
-        }else{
+        }else if (resultCode == EVENT_NOT_ADDED){
             // no new event is added,hence the recyclerview should not be updated
         }
 

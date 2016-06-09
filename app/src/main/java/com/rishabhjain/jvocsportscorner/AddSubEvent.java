@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,13 +14,17 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.rishabhjain.jvocsportscorner.General.Constants;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+
 public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener {
 
-    private static final int EVENT_ADDED = 100;
+
     CheckBox CB_age_senior, CB_age_junior, CB_gender_male, CB_gender_female;
     Spinner gameSpinner, teamOfSpinner;
     String selectedGame, selectedTeamMembers, selectedAgeGroup, selectedGender;
@@ -85,7 +90,7 @@ public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItem
             Toast.makeText(AddSubEvent.this,
                     selectedGame + " " + selectedTeamMembers + " " +selectedAgeGroup + " " +selectedGender,
                     Toast.LENGTH_SHORT).show();
-            setResult(EVENT_ADDED);
+            setResult(SUB_EVENT_ADDED);
             finish();
         }
     }
@@ -132,6 +137,22 @@ public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItem
             selectedAgeGroup += "Juniors";
         if(CB_age_senior.isChecked())
             selectedAgeGroup += "Seniors";
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home ){
+                setResult(SUB_EVENT_NOT_ADDED);
+                finish();
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(SUB_EVENT_NOT_ADDED);
+        finish();
     }
 
     private void setupActionBar() {

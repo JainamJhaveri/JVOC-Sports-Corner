@@ -47,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private void addInitialDashboardFragment(Bundle savedInstanceState) {
         if( savedInstanceState == null) {
             if (fragment == null) {
+                System.out.println(".. . here ..");
                 fragment = new DashboardFragment();
-                getSupportFragmentManager().beginTransaction().add(R.id.main_container, fragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.main_container, fragment).addToBackStack("DB").commit();
                 setTitle("Dashboard");
                 setSPTitle(this, "Dashboard");
             }

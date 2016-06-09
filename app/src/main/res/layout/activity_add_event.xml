@@ -15,28 +15,40 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_event_name"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:hint="Event Name"
-                android:padding="@dimen/activity_vertical_margin"
-                android:singleLine="true"
-                android:textColor="@color/dark_grey" />
+                android:gravity="center">
 
-            <EditText
-                android:id="@+id/et_event_venue"
+                <EditText
+                    android:id="@+id/et_event_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Event Name"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:singleLine="true"
+                    android:textColor="@color/dark_grey" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:hint="Venue"
-                android:padding="@dimen/activity_vertical_margin"
-                android:singleLine="true"
-                android:textColor="@color/dark_grey" />
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/et_event_venue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:hint="Venue"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:singleLine="true"
+                    android:textColor="@color/dark_grey" />
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

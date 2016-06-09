@@ -24,7 +24,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     String title;
 
     ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-        super(inflater.inflate(R.layout.fragment_dashboard, parent, false));
+        super(inflater.inflate(R.layout.item_dashboard, parent, false));
         picture = (ImageView) itemView.findViewById(R.id.tile_picture);
         name = (TextView) itemView.findViewById(R.id.tile_title);
         itemView.setOnClickListener(new View.OnClickListener() {

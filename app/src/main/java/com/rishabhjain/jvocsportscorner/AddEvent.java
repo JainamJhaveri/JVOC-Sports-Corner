@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.rishabhjain.jvocsportscorner.AddEvent_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AddEvent_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 
 import java.text.SimpleDateFormat;
@@ -33,13 +34,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+
 public class AddEvent extends AppCompatActivity {
 
-    private static final int REQ_CODE = 111;
-    private static final int EVENT_ADDED = 100;
     Button editDate, startTimeEdit, endTimeEdit;
     EditText et_event_name, et_event_venue;
-    TextView dateTv, startTimeTv, endTimeTv;
+    TextView dateTv, startTimeTv, endTimeTv, noOfParticipantsTV;
     private List<ItemModel> models;
     private String[] sub_event_names, sub_event_participants;
     private static AddEvent activity;
@@ -51,22 +52,26 @@ public class AddEvent extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Add Event");
+
         getReferences();
+        setFieldValues();
         setupActionBar();
         setupEditButtons();
         activity = this;
         setupRecyclerView();
     }
 
-    public static Resources getAddEventResources(){
-        return activity.getResources();
-    }
+    private void setFieldValues() {
+        Bundle extras = getIntent().getExtras();
+        setTitle(extras.getString(TAG_ADDEVENTTITILE));
 
-    public static AddEvent getAddEventAcInstance(){
-        return activity;
+        et_event_name.setText(extras.getString(TAG_EVENTNAME));
+        et_event_venue.setText(extras.getString(TAG_EVENTVENUE));
+        dateTv.setText(extras.getString(TAG_EVENTDATE));
+        startTimeTv.setText(extras.getString(TAG_STARTTIME));
+        endTimeTv.setText(extras.getString(TAG_ENDTIME));
+        noOfParticipantsTV.setText(String.valueOf(extras.getInt(TAG_UNIQUEPARTICIPANTS)));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,22 +84,25 @@ public class AddEvent extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.add_new_sub_event_menu:
                 Intent intent = new Intent(this, AddSubEvent.class);
-                startActivityForResult(intent, REQ_CODE);
+                startActivityForResult(intent, ADD_SUB_EVENT_REQ_CODE);
                 return true;
             case android.R.id.home:
+                setResult(EVENT_NOT_ADDED);
                 finish();
+                return true;
         }
         return false;
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == EVENT_ADDED) {
-            if (requestCode == REQ_CODE) {
+        if (resultCode == SUB_EVENT_ADDED) {
+            if (requestCode == ADD_SUB_EVENT_REQ_CODE) {
                 // recyclerview should be updated here
             }
-        } else {
-            // no new event is added,hence the recyclerview should not be updated
+        }
+        else if ( resultCode == SUB_EVENT_NOT_ADDED){
+            // called when back button is pressed from AddSubEvent class
         }
 
     }
@@ -141,6 +149,7 @@ public class AddEvent extends AppCompatActivity {
         dateTv = (TextView) findViewById(R.id.dateTV);
         startTimeTv = (TextView) findViewById(R.id.startTimeTV);
         endTimeTv = (TextView) findViewById(R.id.endTimeTV);
+        noOfParticipantsTV = (TextView) findViewById(R.id.no_of_participants);
     }
 
     private void setupActionBar() {
@@ -171,6 +180,12 @@ public class AddEvent extends AppCompatActivity {
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(EVENT_NOT_ADDED);
+        finish();
     }
 
     public void eventDoneClicked(View view) {
@@ -265,4 +280,13 @@ public class AddEvent extends AppCompatActivity {
     public static Resources.Theme getAddEventTheme() {
         return activity.getTheme();
     }
+
+    public static Resources getAddEventResources() {
+        return activity.getResources();
+    }
+
+    public static AddEvent getAddEventAcInstance() {
+        return activity;
+    }
+
 }

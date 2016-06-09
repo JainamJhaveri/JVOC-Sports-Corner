@@ -3,6 +3,7 @@ package com.rishabhjain.jvocsportscorner;
 
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.Dashboard_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.Dashboard_AdVh.ItemModel;
@@ -53,7 +55,8 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recyclerview, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         ContentAdapter adapter = new ContentAdapter(models);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
@@ -70,7 +73,10 @@ public class DashboardFragment extends Fragment {
         }
         recyclerView.setPadding(tilePadding, tilePadding, tilePadding, tilePadding);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), tiles_per_row));
-        return recyclerView;
+        TextView tv_app_name_banner = (TextView) view.findViewById(R.id.tv_app_name_banner);
+        Typeface typeface = Typeface.createFromAsset(getResources().getAssets(), "fonts/RobotoCondensed-Light.ttf");
+        tv_app_name_banner.setTypeface(typeface, Typeface.BOLD);
+        return view;
 
     }
 

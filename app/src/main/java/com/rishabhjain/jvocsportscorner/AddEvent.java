@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.rishabhjain.jvocsportscorner.AddEvent_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AddEvent_AdVh.ItemModel;
-import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 
 import java.text.SimpleDateFormat;

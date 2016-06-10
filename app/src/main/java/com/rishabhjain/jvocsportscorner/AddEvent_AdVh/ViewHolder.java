@@ -1,20 +1,19 @@
 package com.rishabhjain.jvocsportscorner.AddEvent_AdVh;
 
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.content.res.ResourcesCompat;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.AddEvent;
 import com.rishabhjain.jvocsportscorner.R;
+import com.rishabhjain.jvocsportscorner.SEParticipants;
+
+import static com.rishabhjain.jvocsportscorner.General.Constants.*;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     private final TextView sub_event_name;
@@ -28,21 +27,19 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
         sub_event_name.setOnClickListener(this);
         no_of_participants.setOnClickListener(this);
+
         sub_event_name.setOnLongClickListener(this);
-        no_of_participants.setOnClickListener(this);
+        no_of_participants.setOnLongClickListener(this);
     }
 
     void bind(ItemModel itemModel) {
         sub_event_name.setText(itemModel.getSub_event_name());
         no_of_participants.setText(itemModel.getNo_of_participants());
-
     }
 
     @Override
     public boolean onLongClick(View item) {
-        ViewGroup parent = (ViewGroup) item.getParent();
-        clicked_sub_event_name = (TextView) parent.findViewById(R.id.sub_event_name);
-        clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
+        getClickedReferences(item);
         AlertDialog.Builder dialog = new AlertDialog.Builder(AddEvent.getAddEventAcInstance());
         dialog.setTitle("Delete subevent").setMessage("Surely Delete the sub event " + clicked_sub_event_name.getText().toString() + " ?");
         dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
@@ -65,15 +62,27 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         return true;
     }
 
-    @Override
-    public void onClick(View item) {
+    private void getClickedReferences(View item) {
         ViewGroup parent = (ViewGroup) item.getParent();
         clicked_sub_event_name = (TextView) parent.findViewById(R.id.sub_event_name);
         clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
-        System.out.println(clicked_sub_event_name.getText().toString() + " " + clicked_no_of_participants.getText().toString());
-        // intent to new activity that displays event name no of participants and shows recyclerview of all participants and button to add participants
-        // add participants button should display a list of filtered club mems with a checkbox sign and search feature and done button
     }
+
+    @Override
+    public void onClick(View item) {
+        getClickedReferences(item);
+        startAddSubEventActivity();
+    }
+
+    private void startAddSubEventActivity() {
+        Intent i = new Intent(AddEvent.getAddEventAcInstance(), SEParticipants.class);
+
+        i.putExtra(TAG_SUBEVENT_NAME, clicked_sub_event_name.getText().toString());
+        i.putExtra(TAG_SUBEVENT_PARTICIPANTS, clicked_no_of_participants.getText().toString());
+
+        AddEvent.getAddEventAcInstance().startActivity(i);
+    }
+
 
     private void refreshRecyclerView() {
 

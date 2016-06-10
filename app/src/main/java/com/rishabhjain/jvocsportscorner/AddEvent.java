@@ -3,13 +3,12 @@ package com.rishabhjain.jvocsportscorner;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -25,7 +24,6 @@ import android.widget.Toast;
 
 import com.rishabhjain.jvocsportscorner.AddEvent_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AddEvent_AdVh.ItemModel;
-import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +31,18 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_SUB_EVENT_REQ_CODE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
 public class AddEvent extends AppCompatActivity {
 
@@ -69,7 +78,7 @@ public class AddEvent extends AppCompatActivity {
         dateTv.setText(extras.getString(TAG_EVENTDATE));
         startTimeTv.setText(extras.getString(TAG_STARTTIME));
         endTimeTv.setText(extras.getString(TAG_ENDTIME));
-        noOfParticipantsTV.setText(String.valueOf(extras.getInt(TAG_UNIQUEPARTICIPANTS)));
+        noOfParticipantsTV.setText(extras.getString(TAG_UNIQUEPARTICIPANTS));
     }
 
     @Override
@@ -99,8 +108,7 @@ public class AddEvent extends AppCompatActivity {
             if (requestCode == ADD_SUB_EVENT_REQ_CODE) {
                 // recyclerview should be updated here
             }
-        }
-        else if ( resultCode == SUB_EVENT_NOT_ADDED){
+        } else if (resultCode == SUB_EVENT_NOT_ADDED) {
             // called when back button is pressed from AddSubEvent class
         }
 
@@ -123,7 +131,6 @@ public class AddEvent extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this));
     }
 
     private void setupEditButtons() {
@@ -148,7 +155,7 @@ public class AddEvent extends AppCompatActivity {
         dateTv = (TextView) findViewById(R.id.dateTV);
         startTimeTv = (TextView) findViewById(R.id.startTimeTV);
         endTimeTv = (TextView) findViewById(R.id.endTimeTV);
-        noOfParticipantsTV = (TextView) findViewById(R.id.no_of_participants);
+        noOfParticipantsTV = (TextView) findViewById(R.id.total_no_of_participants);
     }
 
     private void setupActionBar() {
@@ -274,14 +281,6 @@ public class AddEvent extends AppCompatActivity {
 
     private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() == 0;
-    }
-
-    public static Resources.Theme getAddEventTheme() {
-        return activity.getTheme();
-    }
-
-    public static Resources getAddEventResources() {
-        return activity.getResources();
     }
 
     public static AddEvent getAddEventAcInstance() {

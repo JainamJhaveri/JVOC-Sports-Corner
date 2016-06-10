@@ -84,8 +84,8 @@
     </string-array>
 
     <string-array name="eventTimes">
-        <item>09:00 a.m. to 4:00 p.m.</item>
-        <item>5:00 p.m. to 12:00 p.m.</item>
+        <item>09:00 AM to 04:00 PM</item>
+        <item>05:00 PM to 12:00 AM</item>
     </string-array>
 
     <string-array name="eventTotalParticipants">

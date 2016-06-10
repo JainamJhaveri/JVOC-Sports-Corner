@@ -23,7 +23,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddSubEvent"
-            android:parentActivityName=".AddEvent"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SEParticipants"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddParticipants"
             android:screenOrientation="portrait" />
     </application>
 

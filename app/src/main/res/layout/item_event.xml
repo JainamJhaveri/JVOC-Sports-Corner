@@ -11,6 +11,7 @@
     android:foreground="?attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/card_event_single_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -98,7 +99,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/action_button"
+            android:id="@+id/button_notify_all_participants"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/card_title_height"

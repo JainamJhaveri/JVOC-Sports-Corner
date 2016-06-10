@@ -8,11 +8,11 @@ public class ItemModel {
         this.no_of_participants = no_of_participants;
     }
 
-    public String getSub_event_name() {
+    String getSub_event_name() {
         return sub_event_name;
     }
 
-    public String getNo_of_participants() {
+    String getNo_of_participants() {
         return no_of_participants;
     }
 

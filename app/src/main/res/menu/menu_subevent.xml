@@ -3,6 +3,6 @@
 
     <item
         android:id="@+id/add_new_sub_event_menu"
-        android:title="Add New SubEvent"/>
+        android:title="Add New Subevent"/>
 
 </menu>

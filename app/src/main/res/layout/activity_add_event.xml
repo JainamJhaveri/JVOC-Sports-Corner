@@ -16,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
@@ -179,18 +180,19 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:background="@color/light_grey"
                 android:paddingLeft="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center|left"
-                    android:text="Unique Participants: "
+                    android:text="Total Participants: "
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/no_of_participants"
+                    android:id="@+id/total_no_of_participants"
                     android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/circular_green_bg"
@@ -200,11 +202,6 @@
                     android:textColor="@color/white" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dark_grey" />
 
             <include
                 layout="@layout/recyclerview"

@@ -13,22 +13,28 @@ public class Constants {
     public static final String TAG_ENDTIME = "end_time";
     public static final String TAG_UNIQUEPARTICIPANTS = "unique_participants";
     public static final String TAG_ADDEVENTTITILE = "add_event_title";
+    public static final String TAG_SUBEVENT_NAME = "sub_event_name";
+    public static final String TAG_SUBEVENT_PARTICIPANTS = "sub_event_participants";
 
     public static final String DEFAULT_EVENTNAME = "";
     public static final String DEFAULT_EVENTVENUE = "";
     public static final String DEFAULT_EVENTDATE = getMyCurrentDate();
     public static final String DEFAULT_STARTTIME = getMyCurrentTime();
     public static final String DEFAULT_ENDTIME = getMyCurrentTime();
-    public static final int DEFAULT_UNIQUEPARTICIPANTS = 0;
+    public static final String DEFAULT_UNIQUEPARTICIPANTS = "0";
     public static final String DEFAULT_ADDEVENTTITLE = "Add Event";
 
     public static final int SUB_EVENT_ADDED = 100;
     public static final int EVENT_ADDED = 101;
+    public static final int PARTICIPANTS_ADDED = 102;
+
     public static final int SUB_EVENT_NOT_ADDED = 400;
     public static final int EVENT_NOT_ADDED = 401;
+    public static final int PARTICIPANTS_NOT_ADDED = 402;
 
     public static final int ADD_EVENT_REQ_CODE = 200;
     public static final int ADD_SUB_EVENT_REQ_CODE = 201;
+    public static final int ADD_PARTICIPANTS_REQ_CODE = 202;
 
     private static String getMyCurrentDate() {
         Calendar myCalendar = Calendar.getInstance();

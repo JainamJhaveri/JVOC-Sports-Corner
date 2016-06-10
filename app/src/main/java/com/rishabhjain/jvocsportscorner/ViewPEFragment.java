@@ -26,7 +26,6 @@ public class ViewPEFragment extends Fragment {
     public ViewPEFragment() {
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

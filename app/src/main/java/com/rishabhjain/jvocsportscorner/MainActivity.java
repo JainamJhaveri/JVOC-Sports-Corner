@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 
 import static com.rishabhjain.jvocsportscorner.General.MyPreferences.getSPTitle;
 import static com.rishabhjain.jvocsportscorner.General.MyPreferences.setSPTitle;
@@ -25,6 +26,22 @@ public class MainActivity extends AppCompatActivity {
 
     public static MainActivity getMainAcInstance(){
         return activity;
+    }
+
+    @Override
+    public void onBackPressed() {
+        ViewGroup v = (ViewGroup) findViewById(R.id.main_container);
+
+        if(  ( R.id.fragment_dashboard == v.getChildAt(0).getId() ) ){
+            System.out.println(".. backpressed from dashboard .. ");
+            super.onBackPressed();
+            return;
+        }
+
+        System.out.println(".. backpressed from non-dashboard fragment.. " +fragment.getClass().getSimpleName());
+        setSPTitle(getApplicationContext(), "Dashboard");
+        setTitle(getSPTitle(getApplicationContext()));
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
     }
 
     @Override
@@ -49,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             if (fragment == null) {
                 System.out.println(".. . here ..");
                 fragment = new DashboardFragment();
-                getSupportFragmentManager().beginTransaction().add(R.id.main_container, fragment).addToBackStack("DB").commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
                 setTitle("Dashboard");
                 setSPTitle(this, "Dashboard");
             }

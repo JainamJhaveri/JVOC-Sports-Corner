@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AddParticipants_AdVH;
+package com.rishabhjain.jvocsportscorner.AddParticipants_AdVh;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

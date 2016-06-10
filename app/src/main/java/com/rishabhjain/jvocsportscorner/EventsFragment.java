@@ -16,12 +16,11 @@ import android.view.ViewGroup;
 
 import com.rishabhjain.jvocsportscorner.Events_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.Events_AdVh.ItemModel;
-import com.rishabhjain.jvocsportscorner.General.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_EVENT_REQ_CODE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_ADDEVENTTITLE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_ENDTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_EVENTDATE;
@@ -29,6 +28,8 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_EVENTNA
 import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_EVENTVENUE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_STARTTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_UNIQUEPARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_NOT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
@@ -39,12 +40,10 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTI
 
 public class EventsFragment extends Fragment {
 
-    private final String TAG = this.getClass().getSimpleName();
     RecyclerView recyclerView;
     ContentAdapter adapter;
     private List<ItemModel> models = null;
-    private String[] eventnames, venues, dates, times;
-    private String[] participants;
+    private String[] eventnames, venues, dates, times, participants;
 
     public EventsFragment() {}
 

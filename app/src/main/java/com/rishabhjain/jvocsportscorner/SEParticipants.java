@@ -15,8 +15,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
-import com.rishabhjain.jvocsportscorner.SEParticipants_AdVH.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.SEParticipants_AdVH.ItemModel;
+import com.rishabhjain.jvocsportscorner.SEParticipants_AdVh.ContentAdapter;
+import com.rishabhjain.jvocsportscorner.SEParticipants_AdVh.ItemModel;
 
 import java.util.ArrayList;
 import java.util.List;

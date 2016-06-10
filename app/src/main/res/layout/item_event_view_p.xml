@@ -87,6 +87,7 @@
                 android:id="@+id/card_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="6"
                 android:ellipsize="end"
                 android:gravity="right"
@@ -97,39 +98,6 @@
                 tools:text="09:00 a.m. to 04:00 p.m." />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/button_notify_all_participants"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/card_title_height"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/ll_date_time"
-            android:layout_marginRight="3dp"
-            android:padding="2dp"
-            android:text="Notify all participants"
-            android:textAllCaps="true"
-            android:textColor="@color/blue"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/notified_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/card_title_height"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/ll_date_time"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/rounded_corner"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Notified All Participants"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:visibility="gone" />
 
 
     </RelativeLayout>

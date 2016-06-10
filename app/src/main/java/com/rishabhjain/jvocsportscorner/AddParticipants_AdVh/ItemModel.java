@@ -1,5 +1,8 @@
-package com.rishabhjain.jvocsportscorner.SEParticipants_AdVH;
+package com.rishabhjain.jvocsportscorner.AddParticipants_AdVh;
 
+/**
+ * Created by jainu on 10/6/16.
+ */
 public class ItemModel {
     private final String name, mem_no, gender, bdate;
 

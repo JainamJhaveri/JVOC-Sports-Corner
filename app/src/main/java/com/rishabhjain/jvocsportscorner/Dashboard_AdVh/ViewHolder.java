@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.EventsFragment;
 import com.rishabhjain.jvocsportscorner.MainActivity;
+import com.rishabhjain.jvocsportscorner.MatchesFragment;
+import com.rishabhjain.jvocsportscorner.MediaFragment;
 import com.rishabhjain.jvocsportscorner.R;
+import com.rishabhjain.jvocsportscorner.ViewPEFragment;
 
 import static com.rishabhjain.jvocsportscorner.General.MyPreferences.getSPTitle;
 import static com.rishabhjain.jvocsportscorner.General.MyPreferences.setSPTitle;
@@ -35,6 +38,18 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                     case 0:
                         title = "Events";
                         fragment = new EventsFragment();
+                        break;
+                    case 1:
+                        title = "Media";
+                        fragment = new MediaFragment();
+                        break;
+                    case 2:
+                        title = "Matches";
+                        fragment = new MatchesFragment();
+                        break;
+                    case 3:
+                        title = "Participants";
+                        fragment = new ViewPEFragment();
                         break;
                 }
                 MainActivity m= MainActivity.getMainAcInstance();

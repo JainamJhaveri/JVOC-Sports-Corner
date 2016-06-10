@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.SEParticipants_AdVH;
+package com.rishabhjain.jvocsportscorner.SEParticipants_AdVh;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;

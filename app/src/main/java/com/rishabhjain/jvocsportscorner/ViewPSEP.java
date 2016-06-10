@@ -10,30 +10,30 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.AddParticipants_AdVh.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.AddParticipants_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
+import com.rishabhjain.jvocsportscorner.ViewPSEP_AdVh.ContentAdapter;
+import com.rishabhjain.jvocsportscorner.ViewPSEP_AdVh.ItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_ADDED;
-import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_NOT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
-public class AddParticipants extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
+public class ViewPSEP extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private String[] names, mem_nos, genders, bdates;
     private List<ItemModel> models = null;
     ContentAdapter adapter;
     RecyclerView recyclerView;
     Toolbar toolbar;
+    TextView subevent_no_of_participants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_participants);
+        setContentView(R.layout.activity_view_psep);
 
         initializeList();
         getReferences();
@@ -43,21 +43,9 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
     }
 
     private void setFieldValues() {
-        setTitle(getIntent().getExtras().getString(TAG_SUBEVENT_NAME));
-    }
-
-    private void initializeRecyclerView() {
-        adapter = new ContentAdapter(models);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this));
-    }
-
-
-    private void getReferences() {
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Bundle extras = getIntent().getExtras();
+        setTitle(extras.getString(TAG_SUBEVENT_NAME));
+        subevent_no_of_participants.setText(extras.getString(TAG_SUBEVENT_PARTICIPANTS));
     }
 
     private void initializeToolbar() {
@@ -68,32 +56,31 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_participants, menu);
-        final MenuItem item = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(this);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+
+        switch (item.getItemId()) {
             case android.R.id.home:
-                setResult(PARTICIPANTS_NOT_ADDED);
-                finish();
-                return true;
-            case R.id.done_menu:
-                setResult(PARTICIPANTS_ADDED);
                 finish();
                 return true;
         }
         return false;
     }
 
+    private void getReferences() {
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        subevent_no_of_participants = (TextView) findViewById(R.id.subevent_no_of_participants);
+    }
+
+    private void initializeRecyclerView() {
+        adapter = new ContentAdapter(models);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this));
+    }
+
     private void initializeList() {
-        // load those club members that match the sub-event criteria
-        // added participants should not be loaded
         models = new ArrayList<>();
         names = getResources().getStringArray(R.array.mem_names);
         mem_nos = getResources().getStringArray(R.array.membership_nos);
@@ -105,6 +92,14 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_viewpsep, menu);
+        final MenuItem item = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
@@ -135,4 +130,6 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
         }
         return filteredModelList;
     }
+
+
 }

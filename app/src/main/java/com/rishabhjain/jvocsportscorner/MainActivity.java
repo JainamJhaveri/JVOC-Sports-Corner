@@ -103,6 +103,18 @@ public class MainActivity extends AppCompatActivity {
                                 title = "Events";
                                 fragment = new EventsFragment();
                                 break;
+                            case R.id.media_menu:
+                                title = "Media";
+                                fragment = new MediaFragment();
+                                break;
+                            case R.id.matches_menu:
+                                title = "Matches";
+                                fragment = new MatchesFragment();
+                                break;
+                            case R.id.viewparticipants_menu:
+                                title = "View Participants";
+                                fragment = new ViewPEFragment();
+                                break;
 
                         }
                         setSPTitle(getApplicationContext(), title);

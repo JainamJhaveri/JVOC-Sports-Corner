@@ -125,7 +125,7 @@
             android:background="@drawable/rounded_corner"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Notified All Participants"
+            android:text="Notified All Participants !"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="12sp"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.rishabhjain.jvocsportscorner.AddSubEvent">
 
     <RelativeLayout
@@ -80,7 +81,8 @@
                 android:padding="5dp"
                 android:weightSum="10">
 
-                <CheckBox
+                <android.support.v7.widget.AppCompatCheckBox
+                    app:buttonTint="@color/red300"
                     android:id="@+id/CB_age_senior"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -91,7 +93,8 @@
                     android:text="Seniors"
                     android:textSize="18sp" />
 
-                <CheckBox
+                <android.support.v7.widget.AppCompatCheckBox
+                    app:buttonTint="@color/red300"
                     android:id="@+id/CB_age_junior"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -126,7 +129,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal">
 
-                    <RadioButton
+                    <android.support.v7.widget.AppCompatRadioButton
+                        app:buttonTint="@color/red300"
                         android:id="@+id/Radio_openForBoth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -134,7 +138,8 @@
                         android:text="Open for Both"
                         android:textSize="18sp" />
 
-                    <RadioButton
+                    <android.support.v7.widget.AppCompatRadioButton
+                        app:buttonTint="@color/red300"
                         android:id="@+id/Radio_exclusive"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -150,7 +155,8 @@
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
 
-                    <CheckBox
+                    <android.support.v7.widget.AppCompatCheckBox
+                        app:buttonTint="@color/red300"
                         android:id="@+id/CB_gender_male"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -159,7 +165,8 @@
                         android:text="Males"
                         android:textSize="18sp" />
 
-                    <CheckBox
+                    <android.support.v7.widget.AppCompatCheckBox
+                        app:buttonTint="@color/red300"
                         android:id="@+id/CB_gender_female"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -174,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:background="@color/blue"
+                android:background="@color/indigo400"
                 android:onClick="subEventDoneClicked"
                 android:text="Done"
                 android:textColor="@color/white" />

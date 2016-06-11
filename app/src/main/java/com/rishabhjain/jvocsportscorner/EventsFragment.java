@@ -115,9 +115,4 @@ public class EventsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 }

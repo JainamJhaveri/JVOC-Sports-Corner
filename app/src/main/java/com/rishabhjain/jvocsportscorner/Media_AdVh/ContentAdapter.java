@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.Events_AdVh;
+package com.rishabhjain.jvocsportscorner.Media_AdVh;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
-    private static final int LENGTH = 5;
-    private final String TAG = this.getClass().getSimpleName();
+public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+
+    private static final int LENGTH = 10;
     private final List<ItemModel> models;
 
     public ContentAdapter(List<ItemModel> models) {
@@ -21,9 +21,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
         return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
     }
 
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ItemModel itemModel = models.get(position % 2 );
+        final ItemModel itemModel = models.get(position % 4);
         holder.bind(itemModel);
     }
 
@@ -31,4 +32,5 @@ public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
     public int getItemCount() {
         return LENGTH;
     }
+
 }

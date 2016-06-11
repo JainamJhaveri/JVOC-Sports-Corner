@@ -7,6 +7,13 @@
         <item>Participants</item>
     </string-array>
 
+    <array name="eventCoverImages">
+        <item>@drawable/events</item>
+        <item>@drawable/matches</item>
+        <item>@drawable/media</item>
+        <item>@drawable/participants</item>
+    </array>
+
     <array name="dashBoardImages">
         <item>@drawable/events</item>
         <item>@drawable/media</item>

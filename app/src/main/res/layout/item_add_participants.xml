@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -18,7 +19,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="8.5" />
 
-        <CheckBox
+        <android.support.v7.widget.AppCompatCheckBox
+            app:buttonTint="@color/red300"
             android:id="@+id/CB_addparticipant"
             android:layout_width="0dp"
             android:layout_height="match_parent"

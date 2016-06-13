@@ -15,9 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rishabhjain.jvocsportscorner.ClubMembers_AdVh.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.ClubMembers_AdVh.ItemModel;
-import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ClubMembers_AdVh.ContentAdapter;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ClubMembers_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.DividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rishabhjain.jvocsportscorner.Media_AdVh.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.Media_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.Media_AdVh.ContentAdapter;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.Media_AdVh.ItemModel;
 
 import java.util.ArrayList;
 import java.util.List;

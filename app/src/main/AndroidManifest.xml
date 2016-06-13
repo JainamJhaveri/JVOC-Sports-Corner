@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Dashboard.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,27 +18,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddEvent"
+            android:name=".Events.AddEvent"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddSubEvent"
+            android:name=".Events.AddSubEvent"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SEParticipants"
+            android:name=".ViewParticipants.SEParticipants"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddParticipants"
+            android:name=".Events.AddParticipants"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewPSE"
+            android:name=".ViewParticipants.ViewPSE"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewPSEP"
+            android:name=".ViewParticipants.ViewPSEP"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ViewPEAllP"
+            android:name=".ViewParticipants.ViewPEAllP"
             android:screenOrientation="portrait" />
-        <activity android:name=".MatchScheduleActivity"></activity>
+        <activity
+            android:name=".Matches.MScheduleActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

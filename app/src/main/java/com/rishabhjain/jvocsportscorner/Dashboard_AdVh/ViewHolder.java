@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.EventsFragment;
 import com.rishabhjain.jvocsportscorner.MainActivity;
-import com.rishabhjain.jvocsportscorner.MatchesFragment;
+import com.rishabhjain.jvocsportscorner.MatchFragment;
 import com.rishabhjain.jvocsportscorner.MediaFragment;
 import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewPEFragment;
@@ -45,7 +45,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
                         break;
                     case 2:
                         title = "Matches";
-                        fragment = new MatchesFragment();
+                        fragment = new MatchFragment();
                         break;
                     case 3:
                         title = "Participants";

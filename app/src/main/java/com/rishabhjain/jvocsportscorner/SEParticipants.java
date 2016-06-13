@@ -53,7 +53,6 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
         Bundle extras = getIntent().getExtras();
         setTitle(extras.getString(TAG_SUBEVENT_NAME));
         subevent_no_of_participants.setText(extras.getString(TAG_SUBEVENT_PARTICIPANTS));
-
     }
 
     private void initializeToolbar() {

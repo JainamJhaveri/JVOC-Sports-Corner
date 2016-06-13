@@ -8,13 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class MatchesFragment extends Fragment {
+public class MatchResultFragment extends Fragment {
 
 
-    public MatchesFragment() {
+    public MatchResultFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +20,7 @@ public class MatchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matches, container, false);
+        return inflater.inflate(R.layout.fragment_matches_result, container, false);
     }
 
 }

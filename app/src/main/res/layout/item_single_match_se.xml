@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/md_keylines"
+    android:layout_marginLeft="@dimen/md_keylines"
+    android:layout_marginRight="@dimen/md_keylines"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/card_single_match_se"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:id="@+id/sub_event_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="7"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="T.T. Senior Singles Males"
+            android:textColor="@color/dark_grey"
+            android:textSize="19sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_sub_event_participants"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/no_of_participants"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_bg"
+                android:gravity="center"
+                android:text="108"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/white" />
+
+
+            <Button
+                android:id="@+id/button_schedule_se"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_title_height"
+                android:layout_below="@+id/ll_sub_event_participants"
+                android:layout_marginTop="-5dp"
+                android:padding="2dp"
+                android:text="Schedule"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/scheduled_se_tv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/card_title_height"
+                android:layout_below="@+id/ll_sub_event_participants"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="-10dp"
+                android:background="@drawable/rounded_corner"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Scheduled!"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

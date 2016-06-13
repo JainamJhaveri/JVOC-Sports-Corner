@@ -38,6 +38,7 @@
         <activity
             android:name=".ViewPEAllP"
             android:screenOrientation="portrait" />
+        <activity android:name=".MatchScheduleActivity"></activity>
     </application>
 
 </manifest>

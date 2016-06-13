@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case R.id.matches_menu:
                                 title = "Matches";
-                                fragment = new MatchesFragment();
+                                fragment = new MatchFragment();
                                 break;
                             case R.id.viewparticipants_menu:
                                 title = "View Participants";

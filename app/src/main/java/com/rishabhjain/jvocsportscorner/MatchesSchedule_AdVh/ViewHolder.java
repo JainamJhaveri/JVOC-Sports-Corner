@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.Events_AdVh;
+package com.rishabhjain.jvocsportscorner.MatchesSchedule_AdVh;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,23 +10,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.AddEvent;
 import com.rishabhjain.jvocsportscorner.MainActivity;
+import com.rishabhjain.jvocsportscorner.MatchScheduleActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
 import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_EVENT_REQ_CODE;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
-public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-    private final String TAG = this.getClass().getSimpleName();
+public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private TextView event_name, no_of_participants, venue, date, time;
     Button b;
+    ViewGroup parent;
     TextView clicked_event_name, clicked_no_of_participants, clicked_venue, clicked_date, clicked_time;
 
     // inflate the item_event and not fragment_events because the textviews referenced are a part of item_event and not fragment_events
@@ -50,13 +45,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         venue.setOnClickListener(this);
         date.setOnClickListener(this);
         time.setOnClickListener(this);
-
-        event_name.setOnLongClickListener(this);
-        no_of_participants.setOnLongClickListener(this);
-        venue.setOnLongClickListener(this);
-        date.setOnLongClickListener(this);
-        time.setOnLongClickListener(this);
-
     }
 
     void bind(ItemModel itemModel){
@@ -70,15 +58,14 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
         // if notify all participants button is clicked
-        final ViewGroup parent;
         if(v.getId() == R.id.button_notify_all_participants){
             parent = (ViewGroup) v.getParent();
             clicked_event_name = (TextView) parent.findViewById(R.id.event_name);
             clicked_date = (TextView) parent.findViewById(R.id.card_date);
 
             AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.getMainAcInstance());
-            dialog.setTitle("Notify").setMessage("Surely notify all participants for "
-                                                +clicked_event_name.getText().toString()+ " ?");
+            dialog.setTitle("Notify").setMessage("Notify all participants for "
+                                                +clicked_event_name.getText().toString()+ "'s schedule?");
             dialog.setPositiveButton("Notify all", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -100,27 +87,20 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         // if area except notify button is clicked and if that clicked area is direct child of card_event_single_item
         else if( isDirectChild(v) ){
             getClickedReferences(v);
-            startAddEventActivity();
+            startMatchScheduleActivity();
         }
         // if clicked area is child of direct child of card_event_single_item
         else{
             v = (ViewGroup)v.getParent();
             getClickedReferences(v);
-            startAddEventActivity();
+            startMatchScheduleActivity();
         }
     }
 
-    private void startAddEventActivity() {
-        Intent i = new Intent(MainActivity.getMainAcInstance(), AddEvent.class);
+    private void startMatchScheduleActivity() {
+        Intent i = new Intent(MainActivity.getMainAcInstance(), MatchScheduleActivity.class);
         i.putExtra(TAG_EVENTNAME, clicked_event_name.getText().toString());
-        i.putExtra(TAG_EVENTVENUE, clicked_venue.getText().toString());
         i.putExtra(TAG_EVENTDATE, clicked_date.getText().toString());
-        String startTimeString = (clicked_time.getText().toString()).substring(0,8);
-        String endTimeString = (clicked_time.getText().toString()).substring(12);
-        i.putExtra(TAG_STARTTIME, startTimeString);
-        i.putExtra(TAG_ENDTIME, endTimeString);
-        i.putExtra(TAG_UNIQUEPARTICIPANTS, clicked_no_of_participants.getText().toString());
-        i.putExtra(TAG_ADDEVENTTITILE, clicked_event_name.getText().toString());
         MainActivity.getMainAcInstance().startActivityForResult(i, ADD_EVENT_REQ_CODE);
     }
 
@@ -146,7 +126,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     /*
-     This method is used for handling events to notify all participants for the selected event
+     This method is used for handling events to notify all participants for the selected event's schedule
      event_name and date are the primary key hence db can be queried to
      fetch venue and time and corresponding participants
       */
@@ -154,31 +134,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         System.out.println(selected_event + " " + selected_date);
     }
 
-    @Override
-    public boolean onLongClick(View v) {
-        if( v.getId() == R.id.button_notify_all_participants ) return true;
-
-        getClickedReferences(v);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.getMainAcInstance());
-        dialog.setTitle("Delete Event").setMessage("Surely Delete the sub event " + clicked_event_name.getText().toString() + " ?");
-        dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                refreshRecyclerView();
-            }
-        });
-
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        dialog.create();
-        dialog.show();
-
-        return true;
-    }
 
     private void refreshRecyclerView() {
 

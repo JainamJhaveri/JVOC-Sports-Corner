@@ -1,7 +1,6 @@
 package com.rishabhjain.jvocsportscorner;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,7 +21,6 @@ import java.util.List;
  */
 public class MatchSingleGameFragment extends Fragment {
 
-    private static Context instance;
     private List<ItemModel> models;
     private String[] sub_event_names, sub_event_participants;
 
@@ -35,7 +33,6 @@ public class MatchSingleGameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_matches_single_game, container, false);
-        instance = this.getContext();
         setupRecyclerView(view);
         return view;
     }
@@ -59,7 +56,7 @@ public class MatchSingleGameFragment extends Fragment {
         }
     }
 
-    public static Context getInstance() {
-        return instance;
+    public static MatchScheduleActivity getInstance() {
+        return MatchScheduleActivity.getMSAcInstance();
     }
 }

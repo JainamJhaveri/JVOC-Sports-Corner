@@ -23,6 +23,11 @@ public class MatchScheduleActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     MatchScheduleActivityAdapter adapter;
+    private static MatchScheduleActivity activity;
+
+    public static MatchScheduleActivity getMSAcInstance(){
+        return activity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class MatchScheduleActivity extends AppCompatActivity {
         getReferences();
         initializeToolbar();
         setupActionBar();
+        activity = this;
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -108,4 +114,5 @@ public class MatchScheduleActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 }

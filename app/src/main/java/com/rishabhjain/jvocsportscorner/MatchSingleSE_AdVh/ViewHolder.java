@@ -3,16 +3,18 @@ package com.rishabhjain.jvocsportscorner.MatchSingleSE_AdVh;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.MatchSingleGameFragment;
+import com.rishabhjain.jvocsportscorner.MatchScheduleActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private final String TAG = this.getClass().getSimpleName();
     private final TextView sub_event_name;
     private final TextView no_of_participants;
     private TextView clicked_sub_event_name, clicked_no_of_participants;
@@ -38,23 +40,23 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         ViewGroup parent = (ViewGroup) item.getParent();
         clicked_sub_event_name = (TextView) parent.findViewById(R.id.sub_event_name);
         clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
+        Log.e(TAG, "getClickedReferences: " +clicked_sub_event_name.getText().toString() + " " +clicked_no_of_participants.getText().toString() );
     }
 
     @Override
     public void onClick(View v) {
-        final ViewGroup parent;
+        final ViewGroup parent, superparent;
         if (v.getId() == R.id.button_schedule_se) {
             parent = (ViewGroup) v.getParent();
-            clicked_sub_event_name = (TextView) parent.findViewById(R.id.event_name);
-            clicked_no_of_participants = (TextView) parent.findViewById(R.id.card_date);
+            superparent = (ViewGroup) parent.getParent();
+            clicked_sub_event_name = (TextView) superparent.findViewById(R.id.sub_event_name);
+            clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
 
-            /*
-            *
-            * alert dialog null error
-            * */
-            AlertDialog.Builder dialog = new AlertDialog.Builder();
-            System.out.println("dialog is null");
-            dialog.setTitle("Notify")
+            System.out.println(""+MatchScheduleActivity.getMSAcInstance());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MatchScheduleActivity.getMSAcInstance());
+
+            System.out.println("dialog is null: " +dialog);
+            dialog.setTitle("Notify people")
                     .setMessage("Surely notify all participants for " + clicked_sub_event_name.getText().toString() + " ?");
             dialog.setPositiveButton("Notify all", new DialogInterface.OnClickListener() {
                 @Override
@@ -96,8 +98,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startRoundScheduleFragment() {
-
-
 
     }
 

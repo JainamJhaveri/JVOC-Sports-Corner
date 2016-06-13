@@ -37,6 +37,7 @@ public class MatchFragment extends Fragment {
         viewPager = (ViewPager) view.findViewById(R.id.pager);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,9 +55,6 @@ public class MatchFragment extends Fragment {
         adapter.addFrag(new MatchResultFragment(), "RESULTS");
         viewPager.setAdapter(adapter);
     }
-
-
-
 
     private class MatchesFragmentAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> mFragmentList = new ArrayList<>();

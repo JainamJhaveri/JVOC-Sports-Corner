@@ -41,6 +41,9 @@
         <activity
             android:name=".Matches.MScheduleActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Matches.RoundActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

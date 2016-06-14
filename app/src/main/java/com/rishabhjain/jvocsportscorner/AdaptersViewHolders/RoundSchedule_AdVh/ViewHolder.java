@@ -9,8 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.Matches.MScheduleActivity;
 import com.rishabhjain.jvocsportscorner.R;
+
+import static com.rishabhjain.jvocsportscorner.Matches.RoundActivity.getRSAcInstance;
 
 /**
  * Created by jainu on 14/6/16.
@@ -58,7 +59,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
             final ViewGroup greatgparent = (ViewGroup) gparent.getParent();
 
             TextView tv_p1_name = (TextView) greatgparent.findViewById(R.id.tv_p1_name);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(MScheduleActivity.getMSAcInstance());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getRSAcInstance());
             dialog.setTitle("Result").setMessage(tv_p1_name.getText().toString() + " wins ? \nThis action can't be undone.");
 
             dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -94,7 +95,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
             final ViewGroup greatgparent = (ViewGroup) gparent.getParent();
 
             TextView tv_p2_name = (TextView) greatgparent.findViewById(R.id.tv_p2_name);
-            AlertDialog.Builder dialog = new AlertDialog.Builder(MScheduleActivity.getMSAcInstance());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getRSAcInstance());
             dialog.setTitle("Result").setMessage(tv_p2_name.getText().toString() + " wins ? \nThis action can't be undone.");
 
             dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

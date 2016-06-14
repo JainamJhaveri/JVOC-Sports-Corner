@@ -1,6 +1,7 @@
 package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchSingleSE_AdVh;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,7 +12,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.Matches.MScheduleActivity;
+import com.rishabhjain.jvocsportscorner.Matches.RoundActivity;
 import com.rishabhjain.jvocsportscorner.R;
+
+import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final String TAG = this.getClass().getSimpleName();
@@ -97,7 +101,11 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startRoundScheduleFragment() {
+        Intent intent = new Intent(MScheduleActivity.getMSAcInstance(), RoundActivity.class);
 
+        intent.putExtra(TAG_SUBEVENT_NAME, sub_event_name.getText().toString());
+
+        MScheduleActivity.getMSAcInstance().startActivity(intent);
     }
 
 }

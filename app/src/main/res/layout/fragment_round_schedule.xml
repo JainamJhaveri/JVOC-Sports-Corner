@@ -24,8 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:text="&lt;"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="0dp"
@@ -43,8 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:text="&gt;"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
     </LinearLayout>
 
     <include

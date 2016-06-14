@@ -1,5 +1,6 @@
 package com.rishabhjain.jvocsportscorner.Matches;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,34 +18,34 @@ import com.rishabhjain.jvocsportscorner.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
 
-public class MScheduleActivity extends AppCompatActivity {
+public class RoundActivity extends AppCompatActivity {
 
+    private static RoundActivity activity;
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
-    MatchScheduleActivityAdapter adapter;
-    private static MScheduleActivity activity;
-
-    public static MScheduleActivity getMSAcInstance(){
-        return activity;
-    }
+    RoundActivityAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_match_schedule);
+        setContentView(R.layout.activity_round);
         Bundle extras = getIntent().getExtras();
-        setTitle(extras.getString(TAG_EVENTNAME));
+        setTitle(extras.getString(TAG_SUBEVENT_NAME));
 
-        adapter = new MatchScheduleActivityAdapter(getSupportFragmentManager());
+        adapter = new RoundActivityAdapter(getSupportFragmentManager());
         getReferences();
         initializeToolbar();
         setupActionBar();
         activity = this;
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public static Context getRSAcInstance() {
+        return activity;
     }
 
     @Override
@@ -70,9 +71,9 @@ public class MScheduleActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        adapter.addFrag(new IndividualGameFragment(), "CHESS");
-        adapter.addFrag(new IndividualGameFragment(), "T.T.");
-        adapter.addFrag(new IndividualGameFragment(), "CARROM");
+        adapter.addFrag(new RoundScheduleFragment(), "CHESS");
+        adapter.addFrag(new RoundScheduleFragment(), "T.T.");
+        adapter.addFrag(new RoundScheduleFragment(), "CARROM");
         viewPager.setAdapter(adapter);
     }
 
@@ -87,11 +88,11 @@ public class MScheduleActivity extends AppCompatActivity {
         System.out.println("Schedule all events clicked");
     }
 
-    private class MatchScheduleActivityAdapter extends FragmentStatePagerAdapter {
+    private class RoundActivityAdapter extends FragmentStatePagerAdapter {
         private List<Fragment> mFragmentList = new ArrayList<>();
         private List<String> mFragmentTitleList = new ArrayList<>();
 
-        public MatchScheduleActivityAdapter(FragmentManager supportFragmentManager) {
+        public RoundActivityAdapter(FragmentManager supportFragmentManager) {
             super(supportFragmentManager);
         }
 
@@ -115,5 +116,4 @@ public class MScheduleActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
-
 }

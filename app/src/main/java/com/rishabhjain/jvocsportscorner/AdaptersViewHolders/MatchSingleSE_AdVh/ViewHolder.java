@@ -52,13 +52,12 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
             clicked_sub_event_name = (TextView) superparent.findViewById(R.id.sub_event_name);
             clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
 
-            System.out.println(""+ MScheduleActivity.getMSAcInstance());
             AlertDialog.Builder dialog = new AlertDialog.Builder(MScheduleActivity.getMSAcInstance());
 
             System.out.println("dialog is null: " +dialog);
             dialog.setTitle("Schedule subevent")
                     .setMessage("Surely schedule " + clicked_sub_event_name.getText().toString() + " ?");
-            dialog.setPositiveButton("Notify all", new DialogInterface.OnClickListener() {
+            dialog.setPositiveButton("Schedule", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     System.out.println(clicked_sub_event_name.getText().toString() + " " + clicked_no_of_participants.getText().toString());
@@ -98,11 +97,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startRoundScheduleFragment() {
-//        FragmentManager manager = MScheduleActivity.getMSAcInstance().getSupportFragmentManager();
 
-//        View view = (View) itemView.getParent().getParent();
-//        ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
-//        manager.beginTransaction().replace(pager.getId(), new RoundScheduleFragment()).commit();
     }
 
 }

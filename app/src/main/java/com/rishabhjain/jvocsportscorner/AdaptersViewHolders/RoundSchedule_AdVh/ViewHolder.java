@@ -1,5 +1,7 @@
 package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.RoundSchedule_AdVh;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.rishabhjain.jvocsportscorner.Matches.MScheduleActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
 /**
@@ -48,48 +51,95 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        ViewGroup parent = (ViewGroup) v.getParent();
-        ViewGroup superparent = (ViewGroup) parent.getParent();
 
-        if( v.getId() == R.id.button_p1_wins){
-            Button b_p1_w = (Button) parent.findViewById(R.id.button_p1_wins);
-            TextView tv_p1_w = (TextView) parent.findViewById(R.id.tv_p1_won);
-            TextView tv_p1_l = (TextView) parent.findViewById(R.id.tv_p1_lost);
+        if (v.getId() == R.id.button_p1_wins) {
+            final ViewGroup parent = (ViewGroup) v.getParent();
+            final ViewGroup gparent = (ViewGroup) parent.getParent();
+            final ViewGroup greatgparent = (ViewGroup) gparent.getParent();
 
-            parent.removeView(b_p1_w);
-            parent.removeView(tv_p1_l);
-            tv_p1_w.setVisibility(View.VISIBLE);
+            TextView tv_p1_name = (TextView) greatgparent.findViewById(R.id.tv_p1_name);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MScheduleActivity.getMSAcInstance());
+            dialog.setTitle("Result").setMessage(tv_p1_name.getText().toString() + " wins ? \nThis action can't be undone.");
 
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
 
-            ViewGroup sibling = (ViewGroup) superparent.getChildAt(1);
+                    ViewGroup sibling = (ViewGroup) gparent.getChildAt(1);
 
-            Button b_p2_w = (Button) sibling.findViewById(R.id.button_p2_wins);
-            TextView tv_p2_w = (TextView) sibling.findViewById(R.id.tv_p2_won);
-            TextView tv_p2_l = (TextView) sibling.findViewById(R.id.tv_p2_lost);
+                    Button b_p1_w = (Button) parent.findViewById(R.id.button_p1_wins);
+                    TextView tv_p1_w = (TextView) parent.findViewById(R.id.tv_p1_won);
+                    TextView tv_p1_l = (TextView) parent.findViewById(R.id.tv_p1_lost);
 
-            sibling.removeView(b_p2_w);
-            sibling.removeView(tv_p2_w);
-            tv_p2_l.setVisibility(View.VISIBLE);
-        }
-        else if(v.getId() == R.id.button_p2_wins){
-            Button b_p2_w = (Button) parent.findViewById(R.id.button_p2_wins);
-            TextView tv_p2_w = (TextView) parent.findViewById(R.id.tv_p2_won);
-            TextView tv_p2_l = (TextView) parent.findViewById(R.id.tv_p2_lost);
+                    Button b_p2_w = (Button) sibling.findViewById(R.id.button_p2_wins);
+                    TextView tv_p2_w = (TextView) sibling.findViewById(R.id.tv_p2_won);
+                    TextView tv_p2_l = (TextView) sibling.findViewById(R.id.tv_p2_lost);
 
-            parent.removeView(b_p2_w);
-            parent.removeView(tv_p2_l);
-            tv_p2_w.setVisibility(View.VISIBLE);
+                    updateWinLostViews(b_p1_w, tv_p1_w, tv_p1_l, b_p2_w, tv_p2_w, tv_p2_l, sibling, parent);
 
+                }
+            });
+            dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
 
-            ViewGroup sibling = (ViewGroup) superparent.getChildAt(0);
+                }
+            });
+            dialog.create();
+            dialog.show();
 
-            Button b_p1_w = (Button) sibling.findViewById(R.id.button_p1_wins);
-            TextView tv_p1_w = (TextView) sibling.findViewById(R.id.tv_p1_won);
-            TextView tv_p1_l = (TextView) sibling.findViewById(R.id.tv_p1_lost);
+        } else if (v.getId() == R.id.button_p2_wins) {
+            final ViewGroup parent = (ViewGroup) v.getParent();
+            final ViewGroup gparent = (ViewGroup) parent.getParent();
+            final ViewGroup greatgparent = (ViewGroup) gparent.getParent();
 
-            sibling.removeView(b_p1_w);
-            sibling.removeView(tv_p1_w);
-            tv_p1_l.setVisibility(View.VISIBLE);
+            TextView tv_p2_name = (TextView) greatgparent.findViewById(R.id.tv_p2_name);
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MScheduleActivity.getMSAcInstance());
+            dialog.setTitle("Result").setMessage(tv_p2_name.getText().toString() + " wins ? \nThis action can't be undone.");
+
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    ViewGroup sibling = (ViewGroup) gparent.getChildAt(0);
+
+                    Button b_p2_w = (Button) parent.findViewById(R.id.button_p2_wins);
+                    TextView tv_p2_w = (TextView) parent.findViewById(R.id.tv_p2_won);
+                    TextView tv_p2_l = (TextView) parent.findViewById(R.id.tv_p2_lost);
+
+                    Button b_p1_w = (Button) sibling.findViewById(R.id.button_p1_wins);
+                    TextView tv_p1_w = (TextView) sibling.findViewById(R.id.tv_p1_won);
+                    TextView tv_p1_l = (TextView) sibling.findViewById(R.id.tv_p1_lost);
+
+                    updateWinLostViews(b_p2_w, tv_p2_w, tv_p2_l, b_p1_w, tv_p1_w, tv_p1_l, sibling, parent);
+
+                }
+            });
+            dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            dialog.create();
+            dialog.show();
+
         }
     }
+
+    public void updateWinLostViews(Button winner_winButton, TextView winner_winTV, TextView winner_lostTV,
+                                   Button loser_winButton, TextView loser_winTV, TextView loser_lostTV,
+                                   ViewGroup sibling, ViewGroup parent) {
+
+        parent.removeView(winner_winButton);
+        parent.removeView(winner_lostTV);
+        winner_winTV.setVisibility(View.VISIBLE);
+
+        sibling.removeView(loser_winButton);
+        sibling.removeView(loser_winTV);
+        loser_lostTV.setVisibility(View.VISIBLE);
+
+    }
+
+
 }

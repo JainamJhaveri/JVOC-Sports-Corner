@@ -49,7 +49,7 @@ public class RoundScheduleFragment extends Fragment implements AdapterView.OnIte
             models.add(new ItemModel(game_nos[i], p1_names[i], p2_names[i], p1_mem_nos[i], p2_mem_nos[i]));
         }
     }
-    private void setUpSpinners() {
+    private void setUpSpinner() {
         List<String> se_list = new ArrayList<>();
         String[] se_array = getResources().getStringArray(R.array.sub_event_names);
         Collections.addAll(se_list, se_array);
@@ -66,7 +66,7 @@ public class RoundScheduleFragment extends Fragment implements AdapterView.OnIte
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_round_schedule, container, false);
         getReferences(view);
-        setUpSpinners();
+        setUpSpinner();
         ContentAdapter adapter = new ContentAdapter(models);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);

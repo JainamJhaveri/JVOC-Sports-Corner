@@ -98,7 +98,11 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startRoundScheduleFragment() {
+//        FragmentManager manager = MScheduleActivity.getMSAcInstance().getSupportFragmentManager();
 
+//        View view = (View) itemView.getParent().getParent();
+//        ViewPager pager = (ViewPager) view.findViewById(R.id.pager);
+//        manager.beginTransaction().replace(pager.getId(), new RoundScheduleFragment()).commit();
     }
 
 }

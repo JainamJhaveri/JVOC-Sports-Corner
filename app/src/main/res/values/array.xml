@@ -131,4 +131,42 @@
         <item>11</item>
     </string-array>
 
+
+    <string-array name="gameNos">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="p1Names">
+        <item>Manohar Doshi</item>
+        <item>Jignesh Patel</item>
+        <item>Aman Chauhan</item>
+        <item>Akarsh Agrawal</item>
+    </string-array>
+
+    <string-array name="p2Names">
+        <item>Dipshil Agrawal</item>
+        <item>Aishwarye Omer</item>
+        <item>Akansha Sharma</item>
+        <item>Akshay Chaudhari</item>
+    </string-array>
+
+    <string-array name="p1MemNos">
+        <item>M-01</item>
+        <item>J-21</item>
+        <item>A-01</item>
+        <item>A-11</item>
+    </string-array>
+
+    <string-array name="p2MemNos">
+        <item>D-05</item>
+        <item>A-01</item>
+        <item>A-01</item>
+        <item>A-11</item>
+    </string-array>
+
+
+
 </resources>

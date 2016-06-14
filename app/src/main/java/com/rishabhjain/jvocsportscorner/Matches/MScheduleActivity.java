@@ -70,9 +70,9 @@ public class MScheduleActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        adapter.addFrag(new IndividualGameFragment(), "CHESS");
+        adapter.addFrag(new RoundScheduleFragment(), "CHESS");
         adapter.addFrag(new IndividualGameFragment(), "T.T.");
-        adapter.addFrag(new IndividualGameFragment(), "CARROM");
+        adapter.addFrag(new RoundScheduleFragment(), "CARROM");
         viewPager.setAdapter(adapter);
     }
 

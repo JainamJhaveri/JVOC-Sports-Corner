@@ -18,7 +18,7 @@
         android:weightSum="10">
 
         <LinearLayout
-            android:id="@+id/ll_sub_event_participants"
+            android:id="@+id/ll_game_no"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -26,7 +26,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/no_of_participants"
+                android:id="@+id/tv_game_no"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/blue_circular_bg"
@@ -49,7 +49,7 @@
                 android:weightSum="10">
 
                 <TextView
-                    android:id="@+id/p1_name"
+                    android:id="@+id/tv_p1_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -61,7 +61,7 @@
                     android:textSize="19sp" />
 
                 <TextView
-                    android:id="@+id/p1_mem_no"
+                    android:id="@+id/tv_p1_mem_no"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -79,7 +79,7 @@
                 android:weightSum="10">
 
                 <TextView
-                    android:id="@+id/p2_name"
+                    android:id="@+id/tv_p2_name"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -91,7 +91,7 @@
                     android:textSize="19sp" />
 
                 <TextView
-                    android:id="@+id/p2_mem_no"
+                    android:id="@+id/tv_p2_mem_no"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -125,7 +125,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/blue"
                     android:textSize="12sp"
-                    android:visibility="gone" />
+                    />
 
                 <TextView
                     android:id="@+id/tv_p1_won"
@@ -139,7 +139,8 @@
                     android:text="Won"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_p1_lost"
@@ -173,7 +174,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/blue"
                     android:textSize="12sp"
-                    android:visibility="gone" />
+                    />
 
                 <TextView
                     android:id="@+id/tv_p2_won"
@@ -202,7 +203,8 @@
                     android:text="Lost"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 

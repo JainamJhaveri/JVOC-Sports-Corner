@@ -19,8 +19,7 @@ import java.util.List;
 
 
 public class ViewPEFragment extends Fragment {
-    RecyclerView recyclerView;
-    ContentAdapter adapter;
+
     private List<ItemModel> models = null;
     private String[] eventnames, venues, dates, times, participants;
 
@@ -50,8 +49,8 @@ public class ViewPEFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_view_pe, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
-        adapter = new ContentAdapter(models);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        ContentAdapter adapter = new ContentAdapter(models);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

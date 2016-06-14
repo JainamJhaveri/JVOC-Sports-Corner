@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.DividerItemDecoration;
+import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ViewPSEP_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ViewPSEP_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.R;
@@ -20,8 +20,8 @@ import com.rishabhjain.jvocsportscorner.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
 public class ViewPSEP extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private String[] names, mem_nos, genders, bdates;

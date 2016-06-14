@@ -14,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.DividerItemDecoration;
+import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SEParticipants_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SEParticipants_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.Events.AddParticipants;
@@ -23,11 +23,11 @@ import com.rishabhjain.jvocsportscorner.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.ADD_PARTICIPANTS_REQ_CODE;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.PARTICIPANTS_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.PARTICIPANTS_NOT_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_PARTICIPANTS_REQ_CODE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
 public class SEParticipants extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private String[] names, mem_nos, genders, bdates;

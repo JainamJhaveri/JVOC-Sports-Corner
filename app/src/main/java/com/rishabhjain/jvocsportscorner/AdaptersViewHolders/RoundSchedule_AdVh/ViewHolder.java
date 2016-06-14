@@ -11,11 +11,8 @@ import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.R;
 
-import static com.rishabhjain.jvocsportscorner.Matches.RoundActivity.getRSAcInstance;
+import static com.rishabhjain.jvocsportscorner.Matches.ScheduleRoundActivity.getRSAcInstance;
 
-/**
- * Created by jainu on 14/6/16.
- */
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView tv_game_no, tv_p1_name, tv_p1_mem_no, tv_p2_name, tv_p2_mem_no, tv_p1_won, tv_p2_won, tv_p1_lost, tv_p2_lost;

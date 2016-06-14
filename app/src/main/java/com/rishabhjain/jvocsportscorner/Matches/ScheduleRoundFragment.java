@@ -21,13 +21,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RoundScheduleFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class ScheduleRoundFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private List<ItemModel> models = null;
     private String[] game_nos, p1_names, p2_names, p1_mem_nos, p2_mem_nos;
     Spinner SESpinner;
     RecyclerView recyclerView;
 
-    public RoundScheduleFragment() {
+    public ScheduleRoundFragment() {
         // Required empty public constructor
     }
 

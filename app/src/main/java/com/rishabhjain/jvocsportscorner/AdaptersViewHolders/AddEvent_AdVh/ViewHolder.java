@@ -13,7 +13,7 @@ import com.rishabhjain.jvocsportscorner.Events.AddEvent;
 import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.SEParticipants;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.*;
+import static com.rishabhjain.jvocsportscorner.General.Constants.*;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     private final TextView sub_event_name;

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants;
+import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.Events.AddEvent;
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
 import com.rishabhjain.jvocsportscorner.R;

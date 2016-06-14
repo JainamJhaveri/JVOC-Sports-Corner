@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchSingleSE_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ScheduleSE_AdVh;
 
 public class ItemModel {
     private final String sub_event_name, no_of_participants;

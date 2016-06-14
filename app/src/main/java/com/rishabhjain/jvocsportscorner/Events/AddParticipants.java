@@ -13,15 +13,15 @@ import android.view.MenuItem;
 
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddParticipants_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddParticipants_AdVh.ItemModel;
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.DividerItemDecoration;
+import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.PARTICIPANTS_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.PARTICIPANTS_NOT_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
 
 public class AddParticipants extends AppCompatActivity implements SearchView.OnQueryTextListener {
 

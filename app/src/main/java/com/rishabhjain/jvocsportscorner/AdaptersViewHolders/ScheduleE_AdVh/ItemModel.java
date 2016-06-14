@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchesSchedule_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ScheduleE_AdVh;
 
 public class ItemModel {
     private final String eventname, venue, date, time, participants;

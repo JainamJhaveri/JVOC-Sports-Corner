@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Matches.ScheduleRoundActivity">
+    tools:context="com.rishabhjain.jvocsportscorner.ResultWinners">
 
     <include layout="@layout/toolbarlayout" />
 
@@ -17,6 +17,5 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>
-
-

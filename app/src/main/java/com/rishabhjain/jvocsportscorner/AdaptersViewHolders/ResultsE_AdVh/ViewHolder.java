@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ViewPE_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ResultsE_AdVh;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -8,18 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
+import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.R;
-import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPSE;
-
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
+import com.rishabhjain.jvocsportscorner.ResultWinners;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private TextView event_name, no_of_participants, venue, date, time;
     TextView clicked_event_name, clicked_no_of_participants, clicked_date;
 
-    // inflate the item_event and not fragment_events because the textviews referenced are a part of item_event and not fragment_events
     ViewHolder(LayoutInflater inflater, ViewGroup parent) {
         super(inflater.inflate(R.layout.item_event_view_p, parent, false));
         getReferences();
@@ -39,7 +35,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         time.setOnClickListener(this);
     }
 
-    void bind(ItemModel itemModel){
+    void bind(ItemModel itemModel) {
         event_name.setText(itemModel.getEventname());
         no_of_participants.setText(itemModel.getParticipants());
         venue.setText(itemModel.getVenue());
@@ -50,24 +46,20 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        // if area except notify button is clicked and if that clicked area is direct child of card_event_single_item
-        if( isDirectChild(v) ){
+        if (isDirectChild(v)) {
             getClickedReferences(v);
             startViewPEventActivity();
-        }
-        // if clicked area is child of direct child of card_event_single_item
-        else{
-            v = (ViewGroup)v.getParent();
+        } else {
+            v = (ViewGroup) v.getParent();
             getClickedReferences(v);
             startViewPEventActivity();
         }
     }
 
     private void startViewPEventActivity() {
-        Intent i = new Intent(MainActivity.getMainAcInstance(), ViewPSE.class);
-        i.putExtra(TAG_UNIQUEPARTICIPANTS, clicked_no_of_participants.getText().toString());
-        i.putExtra(TAG_EVENTNAME, clicked_event_name.getText().toString());
-        i.putExtra(TAG_EVENTDATE, clicked_date.getText().toString());
+        Intent i = new Intent(MainActivity.getMainAcInstance(), ResultWinners.class);
+        i.putExtra(Constants.TAG_EVENTNAME, clicked_event_name.getText().toString());
+        i.putExtra(Constants.TAG_EVENTDATE, clicked_date.getText().toString());
         MainActivity.getMainAcInstance().startActivity(i);
     }
 

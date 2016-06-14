@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchesSchedule_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ScheduleE_AdVh;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants;
+import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
-import com.rishabhjain.jvocsportscorner.Matches.MScheduleActivity;
+import com.rishabhjain.jvocsportscorner.Matches.ScheduleActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -95,7 +95,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startMatchScheduleActivity() {
-        Intent i = new Intent(MainActivity.getMainAcInstance(), MScheduleActivity.class);
+        Intent i = new Intent(MainActivity.getMainAcInstance(), ScheduleActivity.class);
         i.putExtra(Constants.TAG_EVENTNAME, clicked_event_name.getText().toString());
         i.putExtra(Constants.TAG_EVENTDATE, clicked_date.getText().toString());
         MainActivity.getMainAcInstance().startActivityForResult(i, Constants.ADD_EVENT_REQ_CODE);

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="5dp"
     android:orientation="vertical"
-    tools:context="com.rishabhjain.jvocsportscorner.Matches.RoundScheduleFragment">
+    tools:context=".Matches.ScheduleRoundFragment">
 
     <Spinner
         android:id="@+id/SESpinner"

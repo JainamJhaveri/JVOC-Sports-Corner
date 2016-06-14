@@ -32,18 +32,18 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.ADD_SUB_EVENT_REQ_CODE;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.EVENT_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.EVENT_NOT_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.SUB_EVENT_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.SUB_EVENT_NOT_ADDED;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_ADDEVENTTITILE;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_ENDTIME;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_EVENTDATE;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_EVENTNAME;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_EVENTVENUE;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_STARTTIME;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_UNIQUEPARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_SUB_EVENT_REQ_CODE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
 public class AddEvent extends AppCompatActivity {
 
@@ -275,9 +275,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
     private boolean validateInputFields() {
-        if (isEmpty(et_event_name) || isEmpty(et_event_venue))
-            return false;
-        return true;
+        return !(isEmpty(et_event_name) || isEmpty(et_event_venue));
     }
 
     private boolean isEmpty(EditText etText) {

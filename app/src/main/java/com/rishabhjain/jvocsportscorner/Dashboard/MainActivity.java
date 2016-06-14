@@ -20,8 +20,8 @@ import com.rishabhjain.jvocsportscorner.MediaFragment;
 import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPEFragment;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.MyPreferences.getSPTitle;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.MyPreferences.setSPTitle;
+import static com.rishabhjain.jvocsportscorner.General.MyPreferences.getSPTitle;
+import static com.rishabhjain.jvocsportscorner.General.MyPreferences.setSPTitle;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -2,12 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Matches.ResultMainFragment">
+    tools:context="com.rishabhjain.jvocsportscorner.Matches.ResultGameFragment">
 
     <include
         layout="@layout/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

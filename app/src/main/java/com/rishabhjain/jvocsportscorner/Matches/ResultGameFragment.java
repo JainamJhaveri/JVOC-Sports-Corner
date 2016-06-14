@@ -10,20 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ResultsE_AdVh.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ResultsE_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ResultsWinner_AdVh.ContentAdapter;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ResultsWinner_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ResultMainFragment extends Fragment {
+public class ResultGameFragment extends Fragment {
 
     private List<ItemModel> models = null;
-    private String[] eventnames, venues, dates, times, participants;
+    private String[] se_names, wNames, rNames, wMemNos, rMemNos;
 
-    public ResultMainFragment() {
+    public ResultGameFragment() {
         // Required empty public constructor
     }
 
@@ -35,23 +34,22 @@ public class ResultMainFragment extends Fragment {
 
     private void initializeList() {
         models = new ArrayList<>();
-        eventnames = getContext().getResources().getStringArray(R.array.eventNames);
-        venues = getContext().getResources().getStringArray(R.array.eventVenues);
-        dates = getContext().getResources().getStringArray(R.array.eventDates);
-        times = getContext().getResources().getStringArray(R.array.eventTimes);
-        participants = getContext().getResources().getStringArray(R.array.eventTotalParticipants);
+        se_names = getContext().getResources().getStringArray(R.array.sub_event_names);
+        wNames = getContext().getResources().getStringArray(R.array.p1Names);
+        rNames = getContext().getResources().getStringArray(R.array.p2Names);
+        wMemNos = getContext().getResources().getStringArray(R.array.p1MemNos);
+        rMemNos = getContext().getResources().getStringArray(R.array.p2MemNos);
 
-        for (int i = 0; i < eventnames.length; i++) {
-            models.add(new ItemModel(eventnames[i], venues[i], dates[i], times[i], participants[i]));
+        for (int i = 0; i < wNames.length; i++) {
+            models.add(new ItemModel(se_names[i % 2], wNames[i], rNames[i], wMemNos[i], rMemNos[i]));
         }
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_matches_result, container, false);
+        View view = inflater.inflate(R.layout.fragment_result_game, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         ContentAdapter adapter = new ContentAdapter(models);
         recyclerView.setAdapter(adapter);

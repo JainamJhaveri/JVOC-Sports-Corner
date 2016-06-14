@@ -8,8 +8,8 @@ import android.view.MenuItem;
 
 import com.rishabhjain.jvocsportscorner.R;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_EVENTDATE;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
 
 public class ViewPEAllP extends AppCompatActivity {
 

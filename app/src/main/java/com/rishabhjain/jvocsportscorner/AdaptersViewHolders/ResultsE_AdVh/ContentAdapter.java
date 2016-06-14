@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchesSchedule_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ResultsE_AdVh;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,9 +7,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
-    private static final int LENGTH = 5;
-    private final String TAG = this.getClass().getSimpleName();
+public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+    private static final int LENGTH = 10;
     private final List<ItemModel> models;
 
     public ContentAdapter(List<ItemModel> models) {

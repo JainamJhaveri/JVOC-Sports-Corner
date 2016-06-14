@@ -18,11 +18,11 @@ import com.rishabhjain.jvocsportscorner.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
 
-public class RoundActivity extends AppCompatActivity {
+public class ScheduleRoundActivity extends AppCompatActivity {
 
-    private static RoundActivity activity;
+    private static ScheduleRoundActivity activity;
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -71,9 +71,9 @@ public class RoundActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        adapter.addFrag(new RoundScheduleFragment(), "CHESS");
-        adapter.addFrag(new RoundScheduleFragment(), "T.T.");
-        adapter.addFrag(new RoundScheduleFragment(), "CARROM");
+        adapter.addFrag(new ScheduleRoundFragment(), "CHESS");
+        adapter.addFrag(new ScheduleRoundFragment(), "T.T.");
+        adapter.addFrag(new ScheduleRoundFragment(), "CARROM");
         viewPager.setAdapter(adapter);
     }
 

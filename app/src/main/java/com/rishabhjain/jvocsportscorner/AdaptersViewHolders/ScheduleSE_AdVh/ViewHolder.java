@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchSingleSE_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ScheduleSE_AdVh;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.Matches.MScheduleActivity;
-import com.rishabhjain.jvocsportscorner.Matches.RoundActivity;
+import com.rishabhjain.jvocsportscorner.Matches.ScheduleActivity;
+import com.rishabhjain.jvocsportscorner.Matches.ScheduleRoundActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final String TAG = this.getClass().getSimpleName();
@@ -56,7 +56,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
             clicked_sub_event_name = (TextView) superparent.findViewById(R.id.sub_event_name);
             clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
 
-            AlertDialog.Builder dialog = new AlertDialog.Builder(MScheduleActivity.getMSAcInstance());
+            AlertDialog.Builder dialog = new AlertDialog.Builder(ScheduleActivity.getMSAcInstance());
 
             System.out.println("dialog is null: " +dialog);
             dialog.setTitle("Schedule subevent")
@@ -101,11 +101,11 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startRoundScheduleFragment() {
-        Intent intent = new Intent(MScheduleActivity.getMSAcInstance(), RoundActivity.class);
+        Intent intent = new Intent(ScheduleActivity.getMSAcInstance(), ScheduleRoundActivity.class);
 
         intent.putExtra(TAG_SUBEVENT_NAME, sub_event_name.getText().toString());
 
-        MScheduleActivity.getMSAcInstance().startActivity(intent);
+        ScheduleActivity.getMSAcInstance().startActivity(intent);
     }
 
 }

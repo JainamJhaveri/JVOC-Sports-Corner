@@ -11,8 +11,8 @@ import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPSE;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPSEP;
 
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_NAME;
-import static com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private final TextView sub_event_name;

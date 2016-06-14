@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchesSchedule_AdVh.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MatchesSchedule_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ScheduleE_AdVh.ContentAdapter;
+import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.ScheduleE_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;

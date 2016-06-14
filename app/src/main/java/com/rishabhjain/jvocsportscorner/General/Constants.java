@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.General;
+package com.rishabhjain.jvocsportscorner.General;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

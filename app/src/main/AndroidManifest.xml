@@ -50,7 +50,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MediaUploadActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Media.DetailImageAc"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

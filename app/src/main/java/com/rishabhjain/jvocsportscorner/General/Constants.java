@@ -15,6 +15,7 @@ public class Constants {
     public static final String TAG_ADDEVENTTITILE = "add_event_title";
     public static final String TAG_SUBEVENT_NAME = "sub_event_name";
     public static final String TAG_SUBEVENT_PARTICIPANTS = "sub_event_participants";
+    public static final String TAG_IMG_POSITION = "img_position";
 
     public static final String DEFAULT_EVENTNAME = "";
     public static final String DEFAULT_EVENTVENUE = "";

@@ -20,9 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class MediaFragment extends Fragment {
 
     RecyclerView recyclerView;

@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner;
+package com.rishabhjain.jvocsportscorner.Matches;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.Matches.ResultGameFragment;
+import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;

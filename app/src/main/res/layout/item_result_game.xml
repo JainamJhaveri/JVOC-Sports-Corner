@@ -16,8 +16,6 @@
 
         <TextView
             android:id="@+id/tv_sub_event_name"
-            android:background="@drawable/rounded_corner"
-            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -25,15 +23,24 @@
             android:text="T.T. Senior Singles Males"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
+        <View
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/light_grey"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:weightSum="10">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5">
+
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -43,11 +50,13 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8.5"
                 android:weightSum="10">
+
                 <TextView
                     android:id="@+id/tv_1st_name"
                     android:layout_width="0dp"
@@ -59,6 +68,7 @@
                     android:text="Manohar Doshi"
                     android:textColor="@color/dark_grey"
                     android:textSize="19sp" />
+
                 <TextView
                     android:id="@+id/tv_1st_mem_no"
                     android:layout_width="0dp"
@@ -76,12 +86,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="10"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:weightSum="10">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5">
+
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -91,11 +103,13 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@color/white" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8.5"
                 android:weightSum="10">
+
                 <TextView
                     android:id="@+id/tv_2nd_name"
                     android:layout_width="0dp"
@@ -107,6 +121,7 @@
                     android:text="Manohar Doshi"
                     android:textColor="@color/dark_grey"
                     android:textSize="19sp" />
+
                 <TextView
                     android:id="@+id/tv_2nd_mem_no"
                     android:layout_width="0dp"

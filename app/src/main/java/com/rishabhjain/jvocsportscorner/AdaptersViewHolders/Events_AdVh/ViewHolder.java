@@ -150,7 +150,12 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public boolean onLongClick(View v) {
         if( v.getId() == R.id.button_notify_all_participants ) return true;
 
-        getClickedReferences(v);
+        if( isDirectChild(v) ){
+            getClickedReferences(v);
+        }else{
+            v = (ViewGroup)v.getParent();
+            getClickedReferences(v);
+        }
         AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.getMainAcInstance());
         dialog.setTitle("Delete Event").setMessage("Surely Delete the sub event " + clicked_event_name.getText().toString() + " ?");
         dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {

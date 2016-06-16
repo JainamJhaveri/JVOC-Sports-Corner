@@ -23,6 +23,7 @@
             android:src="@drawable/events" />
 
         <LinearLayout
+            android:id="@+id/grey_bg_image"
             android:background="@color/transc_grey"
             android:layout_width="match_parent"
             android:layout_height="60dp"

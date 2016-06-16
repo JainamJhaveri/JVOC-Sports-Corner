@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner;
+package com.rishabhjain.jvocsportscorner.Media;
 
 
 import android.content.res.TypedArray;
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.Media_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.Media_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;

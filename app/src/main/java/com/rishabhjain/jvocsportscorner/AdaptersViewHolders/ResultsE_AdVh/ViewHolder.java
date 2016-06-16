@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
 import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.R;
-import com.rishabhjain.jvocsportscorner.ResultWinners;
+import com.rishabhjain.jvocsportscorner.Matches.ResultWinners;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private TextView event_name, no_of_participants, venue, date, time;

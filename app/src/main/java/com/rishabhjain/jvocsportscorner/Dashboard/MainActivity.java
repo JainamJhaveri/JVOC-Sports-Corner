@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.rishabhjain.jvocsportscorner.ClubMembersFragment;
 import com.rishabhjain.jvocsportscorner.Events.EventsFragment;
 import com.rishabhjain.jvocsportscorner.Matches.MainFragment;
-import com.rishabhjain.jvocsportscorner.MediaFragment;
+import com.rishabhjain.jvocsportscorner.Media.MediaFragment;
 import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPEFragment;
 
@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         System.out.println(".. backpressed from non-dashboard fragment.. " +fragment.getClass().getSimpleName());
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
         setSPTitle(getApplicationContext(), "Dashboard");
         setTitle(getSPTitle(getApplicationContext()));
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
     }
 
     @Override

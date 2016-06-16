@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.rishabhjain.jvocsportscorner.Events.EventsFragment;
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
 import com.rishabhjain.jvocsportscorner.Matches.MainFragment;
-import com.rishabhjain.jvocsportscorner.MediaFragment;
+import com.rishabhjain.jvocsportscorner.Media.MediaFragment;
 import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPEFragment;
 

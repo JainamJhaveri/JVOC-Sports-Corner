@@ -53,8 +53,8 @@ public class ScheduleRoundFragment extends Fragment implements AdapterView.OnIte
         List<String> se_list = new ArrayList<>();
         String[] se_array = getResources().getStringArray(R.array.sub_event_names);
         Collections.addAll(se_list, se_array);
-        ArrayAdapter<String> se_adapter = new ArrayAdapter<>
-                (this.getContext(), android.R.layout.simple_spinner_item, se_list);
+        ArrayAdapter<String> se_adapter =
+                new ArrayAdapter<>(this.getContext(), android.R.layout.simple_spinner_item, se_list);
 
         se_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SESpinner.setAdapter(se_adapter);

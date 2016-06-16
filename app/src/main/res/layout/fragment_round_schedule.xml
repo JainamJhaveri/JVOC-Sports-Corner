@@ -14,41 +14,54 @@
         android:gravity="center"
         android:padding="5dp" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="&lt;"
-            android:textSize="20sp" />
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="&lt;"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:gravity="center"
-            android:text="Round 1"
-            android:textAllCaps="true"
-            android:textColor="@color/dark_grey"
-            android:textSize="20sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:text="Round 1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="16sp" />
 
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="&gt;"
-            android:textSize="20sp" />
-    </LinearLayout>
+                <Button
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="&gt;"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
-    <include
-        layout="@layout/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal" />
+            <include
+                layout="@layout/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
 
 </LinearLayout>

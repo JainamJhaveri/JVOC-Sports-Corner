@@ -8,10 +8,82 @@
 
     <include layout="@layout/toolbarlayout" />
 
-    <TextView
-        android:textSize="40sp"
-        android:gravity="center"
-        android:text="Table layout of all participants for event name mentioned in the toolbar and date passed through Intent will come here"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <HorizontalScrollView
+            android:id="@+id/hscrll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:id="@+id/table_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TableRow
+                    android:id="@+id/tblrow0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/green_rounded_corner"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_tblrow0_sno"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="SNo."
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="Participant Name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:text="Mem No."
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <!--<TextView-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_width="100dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:text="Carrom Doubles Seniors Males"-->
+                    <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+                    <!--android:textSize="18sp" />-->
+
+                    <!--<TextView-->
+                    <!--android:gravity="center"-->
+                    <!--android:layout_width="100dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginRight="5dp"-->
+                    <!--android:text="T.T. Doubles Seniors Females"-->
+                    <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
+                    <!--android:textSize="18sp" />-->
+                </TableRow>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
+    </ScrollView>
+
 </LinearLayout>

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    private final String TAG = this.getClass().getSimpleName();
     private DrawerLayout mDrawerLayout;
+    NavigationView navigationView;
     Fragment fragment;
     private String title;
     private static MainActivity activity;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         ViewGroup v = (ViewGroup) findViewById(R.id.main_container);
 
+        assert v != null;
         if(  ( R.id.fragment_dashboard == v.getChildAt(0).getId() ) ){
             System.out.println(".. backpressed from dashboard .. ");
             super.onBackPressed();
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
         setSPTitle(getApplicationContext(), "Dashboard");
         setTitle(getSPTitle(getApplicationContext()));
+        navigationView.getMenu().getItem(0).setChecked(true);
+
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START))
+            mDrawerLayout.closeDrawers();
     }
 
     @Override
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setNavigationView() {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(   // Set behavior of Navigation drawer
                 new NavigationView.OnNavigationItemSelectedListener() {

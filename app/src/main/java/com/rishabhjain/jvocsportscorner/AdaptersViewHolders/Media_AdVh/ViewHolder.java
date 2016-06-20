@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
-import com.rishabhjain.jvocsportscorner.MediaUploadActivity;
+import com.rishabhjain.jvocsportscorner.Media.MediaUploadActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;

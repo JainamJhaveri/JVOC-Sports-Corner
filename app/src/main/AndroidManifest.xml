@@ -49,7 +49,7 @@
             android:name=".Matches.ResultWinners"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MediaUploadActivity"
+            android:name=".Media.MediaUploadActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Media.DetailImageAc"

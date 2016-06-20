@@ -42,12 +42,13 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public boolean onLongClick(View item) {
         getClickedReferences(item);
         AlertDialog.Builder dialog = new AlertDialog.Builder(SubEvents.getSubEventsAcInstance());
+        final int delete_position = this.getLayoutPosition();
         dialog.setTitle("Delete subevent").setMessage("Surely Delete the sub event " + clicked_sub_event_name.getText().toString() + " ?");
         dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                refreshRecyclerView();
+                SubEvents.deleteRVItemAt(delete_position);
             }
         });
 
@@ -72,10 +73,10 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View item) {
         getClickedReferences(item);
-        startAddSubEventActivity();
+        startSEPActivity();
     }
 
-    private void startAddSubEventActivity() {
+    private void startSEPActivity() {
         Intent i = new Intent(SubEvents.getSubEventsAcInstance(), SEParticipants.class);
 
         i.putExtra(TAG_SUBEVENT_NAME, clicked_sub_event_name.getText().toString());

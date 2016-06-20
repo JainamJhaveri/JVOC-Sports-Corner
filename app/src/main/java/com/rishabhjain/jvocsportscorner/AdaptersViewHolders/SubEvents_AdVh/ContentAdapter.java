@@ -34,4 +34,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     public int getItemCount() {
         return models.size();
     }
+
+    public static void deleteItem(int position) {
+        models.remove(position);
+    }
 }

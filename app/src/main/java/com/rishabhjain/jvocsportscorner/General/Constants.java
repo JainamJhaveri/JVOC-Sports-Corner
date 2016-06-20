@@ -21,6 +21,7 @@ public class Constants {
     public static final String TAG_GENDER = "gender";
     public static final String TAG_EDITFLAG = "edit_flag";
     public static final String TAG_EDIT_POSITION = "edit_position";
+    public static final String TAG_ADDED_PARTICIPANTS_ARRAY = "added_participants_array";
 //    public static final String TAG_IMG_POSITION = "img_position";
 
     public static final String DEFAULT_EVENTNAME = "";
@@ -45,7 +46,6 @@ public class Constants {
 
     public static final int EDIT_EVENT_REQ_CODE = 250;
     public static final int EVENT_EDITED = 350;
-
 
     private static String getMyCurrentDate() {
         Calendar myCalendar = Calendar.getInstance();

@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner;
+package com.rishabhjain.jvocsportscorner.Media;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MediaEIndividual_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.MediaEIndividual_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;

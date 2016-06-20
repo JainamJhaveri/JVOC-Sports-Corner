@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.rishabhjain.jvocsportscorner.Media.DetailImageAc;
-import com.rishabhjain.jvocsportscorner.MediaUploadActivity;
+import com.rishabhjain.jvocsportscorner.Media.MediaUploadActivity;
 import com.rishabhjain.jvocsportscorner.R;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

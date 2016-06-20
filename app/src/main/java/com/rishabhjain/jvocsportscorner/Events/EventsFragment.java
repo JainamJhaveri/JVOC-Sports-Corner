@@ -115,7 +115,7 @@ public class EventsFragment extends Fragment {
         }
     }
 
-    private void initializeList() {
+    private void initializeList() {     // TODO: This list will be populated from the GetAllEvents.php
         models = new ArrayList<>();
         eventnames = getContext().getResources().getStringArray(R.array.eventNames);
         venues = getContext().getResources().getStringArray(R.array.eventVenues);
@@ -131,7 +131,6 @@ public class EventsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         adapter = new ContentAdapter(models);
@@ -147,7 +146,6 @@ public class EventsFragment extends Fragment {
 
 
     public static void startEditAddEventAc(String event_name_str, String venue_str, String date_str, String time_str, String no_of_participants_str, int edit_position) {
-
         Intent i = new Intent(getEventsInstance(), AddEvent.class);
         i.putExtra(TAG_EVENTNAME, event_name_str);
         i.putExtra(TAG_EVENTVENUE, venue_str);
@@ -163,17 +161,17 @@ public class EventsFragment extends Fragment {
         event_fragment_instance.startActivityForResult(i, EDIT_EVENT_REQ_CODE);
     }
 
-    private void editRVItem(int edit_position, ItemModel itemModel) {
+    private void editRVItem(int edit_position, ItemModel itemModel) {   // TODO: UpdateEvent.php will be called from here, check for duplication on server side before updation
         ContentAdapter.replaceItem(edit_position, itemModel);
         adapter.notifyDataSetChanged();
     }
 
-    private void addRVItem(ItemModel itemModel) {
+    private void addRVItem(ItemModel itemModel) {                       // TODO: AddEvent.php will be called from here, check for duplication on server side before insertion
         ContentAdapter.addItem(itemModel);
         adapter.notifyDataSetChanged();
     }
 
-    public static void deleteRVItemAt(int position) {
+    public static void deleteRVItemAt(int position) {                   // TODO: DeleteEvent.php will be called from here
         ContentAdapter.deleteItem(position);
         adapter.notifyDataSetChanged();
     }

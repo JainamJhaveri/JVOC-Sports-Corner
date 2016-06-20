@@ -1,5 +1,6 @@
 package com.rishabhjain.jvocsportscorner.Events;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddParticipants_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddParticipants_AdVh.ItemModel;
+import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 import com.rishabhjain.jvocsportscorner.R;
 
@@ -85,11 +87,23 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
                 finish();
                 return true;
             case R.id.done_menu:
-                setResult(PARTICIPANTS_ADDED);
+
+                Intent output = new Intent();
+                output.putExtra(Constants.TAG_ADDED_PARTICIPANTS_ARRAY, getSelectedParticipants());
+                setResult(PARTICIPANTS_ADDED, output);
                 finish();
                 return true;
         }
         return false;
+    }
+
+    private ArrayList<ItemModel> getSelectedParticipants() {
+        ArrayList<ItemModel> selectedParticipants = null;
+        for (ItemModel model: models) {
+            // TODO: Check for each ticked participants and add them to selectedParticipants
+        }
+
+        return selectedParticipants;
     }
 
     private void initializeList() {

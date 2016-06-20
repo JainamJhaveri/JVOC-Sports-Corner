@@ -31,7 +31,7 @@ public class SubEvents extends AppCompatActivity {
     TextView noOfParticipantsTV;
     private List<ItemModel> models;
     RecyclerView recyclerView;
-    ContentAdapter adapter;
+    static ContentAdapter adapter;
     private static SubEvents activity;
 
     @Override
@@ -164,5 +164,10 @@ public class SubEvents extends AppCompatActivity {
 
     public static SubEvents getSubEventsAcInstance() {
         return activity;
+    }
+
+    public static void deleteRVItemAt(int position) {
+        ContentAdapter.deleteItem(position);
+        adapter.notifyDataSetChanged();
     }
 }

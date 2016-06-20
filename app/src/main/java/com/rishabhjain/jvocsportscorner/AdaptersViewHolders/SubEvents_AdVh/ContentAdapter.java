@@ -38,4 +38,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
     public static void deleteItem(int position) {
         models.remove(position);
     }
+
+    public static void replaceItem(int edit_position, ItemModel itemModel) {
+        models.set(edit_position, itemModel);
+    }
 }

@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.Events.SubEvents;
+import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.SEParticipants;
 
+import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_PARTICIPANTS_REQ_CODE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SE_EDIT_POSITION;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
@@ -73,16 +75,18 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public void onClick(View item) {
         getClickedReferences(item);
-        startSEPActivity();
+        int editposition = this.getLayoutPosition();
+        startSEPActivity(editposition);
     }
 
-    private void startSEPActivity() {
+    private void startSEPActivity(int editposition) {
         Intent i = new Intent(SubEvents.getSubEventsAcInstance(), SEParticipants.class);
 
         i.putExtra(TAG_SUBEVENT_NAME, clicked_sub_event_name.getText().toString());
         i.putExtra(TAG_SUBEVENT_PARTICIPANTS, clicked_no_of_participants.getText().toString());
+        i.putExtra(TAG_SE_EDIT_POSITION, editposition);
 
-        SubEvents.getSubEventsAcInstance().startActivity(i);
+        SubEvents.getSubEventsAcInstance().startActivityForResult(i, ADD_PARTICIPANTS_REQ_CODE);
     }
 
 

@@ -88,7 +88,6 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
                 return true;
             case R.id.done_menu:
                 Intent output = new Intent();
-                System.out.println("From Addparticipants: \n\n" + ContentAdapter.getSelectedParticipants());
                 output.putExtra(Constants.TAG_ADDED_PARTICIPANTS_ARRAY, ContentAdapter.getSelectedParticipants());
                 setResult(PARTICIPANTS_ADDED, output);
                 finish();

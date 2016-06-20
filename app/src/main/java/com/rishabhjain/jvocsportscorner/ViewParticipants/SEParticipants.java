@@ -28,17 +28,19 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_PARTICIPANT
 import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_NOT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDED_PARTICIPANTS_ARRAY;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SE_EDIT_POSITION;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
 public class SEParticipants extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private String[] names, mem_nos, genders, bdates;
     private List<ItemModel> models = null;
-    ContentAdapter adapter;
+    static ContentAdapter adapter;
     RecyclerView recyclerView;
     Toolbar toolbar;
-    TextView subevent_no_of_participants;
+    static TextView subevent_no_of_participants;
     private static SEParticipants activity;
+    private int editposition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
         Bundle extras = getIntent().getExtras();
         setTitle(extras.getString(TAG_SUBEVENT_NAME));
         subevent_no_of_participants.setText(extras.getString(TAG_SUBEVENT_PARTICIPANTS));
+        editposition = extras.getInt(TAG_SE_EDIT_POSITION);
     }
 
     private void initializeToolbar() {
@@ -97,7 +100,7 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                handleBackPressed();
                 return true;
             case R.id.add_se_participants_menu:
                 Intent i = new Intent(this, AddParticipants.class);
@@ -106,6 +109,20 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
                 return true;
         }
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        handleBackPressed();
+    }
+
+    private void handleBackPressed() {
+        Intent data = new Intent();
+        data.putExtra(TAG_SUBEVENT_PARTICIPANTS, subevent_no_of_participants.getText().toString());
+        data.putExtra(TAG_SUBEVENT_NAME, getTitle().toString());
+        data.putExtra(TAG_SE_EDIT_POSITION, editposition);
+        setResult(PARTICIPANTS_ADDED, data);
+        finish();
     }
 
     @Override
@@ -122,6 +139,7 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
                 }
             }
         } else if (resultCode == PARTICIPANTS_NOT_ADDED) {
+
             System.out.println("participants not added");
         }
     }
@@ -142,17 +160,17 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
 
     @Override
     public boolean onQueryTextChange(String query) {
-        final List<ItemModel> filteredModelList = filter(models, query);
+        final List<ItemModel> filteredModelList = filter(query);
         adapter.animateTo(filteredModelList);
         recyclerView.scrollToPosition(0);
         return true;
     }
 
-    private List<ItemModel> filter(List<ItemModel> models, String query) {
+    private List<ItemModel> filter(String query) {
         query = query.toLowerCase();
 
         final List<ItemModel> filteredModelList = new ArrayList<>();
-        for (ItemModel model : models) {
+        for (ItemModel model : ContentAdapter.getModels()) {
             final String name_text = model.getName().toLowerCase();
             final String bdate_text = model.getBdate().toLowerCase();
             final String gender_text = model.getGender().toLowerCase();
@@ -172,5 +190,16 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
     private void addRVItem(ItemModel itemModel) {       // TODO: AddParticipant.php will be called from here, check for duplication on server side before insertion
         ContentAdapter.addItem(itemModel);
         adapter.notifyDataSetChanged();
+//        addParticipantCount();
+        int se_p_count = Integer.parseInt(subevent_no_of_participants.getText().toString()) + 1;
+        subevent_no_of_participants.setText(String.valueOf(se_p_count));
+    }
+
+    public static void deleteRVItemAt(int position) {                   // TODO: RemoveParticipant.php will be called from here
+        ContentAdapter.deleteItem(position);
+        adapter.notifyDataSetChanged();
+//        reduceParticipantCount();
+        int se_p_count = Integer.parseInt(subevent_no_of_participants.getText().toString()) - 1;
+        subevent_no_of_participants.setText(String.valueOf(se_p_count));
     }
 }

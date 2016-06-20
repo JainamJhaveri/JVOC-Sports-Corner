@@ -22,6 +22,7 @@ public class Constants {
     public static final String TAG_EDITFLAG = "edit_flag";
     public static final String TAG_EDIT_POSITION = "edit_position";
     public static final String TAG_ADDED_PARTICIPANTS_ARRAY = "added_participants_array";
+    public static final String TAG_SE_EDIT_POSITION = "se_edit_pos";
 //    public static final String TAG_IMG_POSITION = "img_position";
 
     public static final String DEFAULT_EVENTNAME = "";

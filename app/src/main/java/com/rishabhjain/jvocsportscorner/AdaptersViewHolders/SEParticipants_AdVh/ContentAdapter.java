@@ -14,6 +14,10 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.models = new ArrayList<>(models);
     }
 
+    public static List<ItemModel> getModels() {
+        return models;
+    }
+
     public void animateTo(List<ItemModel> models) {
         applyAndAnimateRemovals(models);
         applyAndAnimateAdditions(models);
@@ -86,5 +90,9 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public static void addItem(ItemModel model) {
         models.add(model);
+    }
+
+    public static void deleteItem(int position) {
+        models.remove(position);
     }
 }

@@ -13,17 +13,22 @@ import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SubEvents_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SubEvents_AdVh.ItemModel;
-import com.rishabhjain.jvocsportscorner.General.Constants;
 import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_PARTICIPANTS_REQ_CODE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_SUB_EVENT_REQ_CODE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_AGE_GROUP;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_GAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_GENDER;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SE_EDIT_POSITION;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_TEAM_SIZE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
@@ -74,7 +79,7 @@ public class SubEvents extends AppCompatActivity {
 
     private void setFieldValues() {
         Bundle extras = getIntent().getExtras();
-        setTitle(extras.getString(Constants.TAG_EVENTNAME));
+        setTitle(extras.getString(TAG_EVENTNAME));
         noOfParticipantsTV.setText(extras.getString(TAG_UNIQUEPARTICIPANTS));
     }
 
@@ -135,6 +140,13 @@ public class SubEvents extends AppCompatActivity {
                 }
             }
         }
+        else if( requestCode == ADD_PARTICIPANTS_REQ_CODE && resultCode == PARTICIPANTS_ADDED){
+            Bundle extras = data.getExtras();
+            int editposition = extras.getInt(TAG_SE_EDIT_POSITION);
+            String no_of_participants = extras.getString(TAG_SUBEVENT_PARTICIPANTS);
+            String subeventname = extras.getString(TAG_SUBEVENT_NAME);
+            editRVItem(editposition, new ItemModel( subeventname, no_of_participants ));
+        }
     }
 
     private void addtoRecyclerView(String se_name) {
@@ -166,8 +178,13 @@ public class SubEvents extends AppCompatActivity {
         return activity;
     }
 
-    public static void deleteRVItemAt(int position) {
+    public static void deleteRVItemAt(int position) {                       // TODO: DeleteSubEvent.php should be called from here
         ContentAdapter.deleteItem(position);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void editRVItem(int edit_position, ItemModel itemModel) {       // TODO: UpdateSubEvent.php should be called from here
+        ContentAdapter.replaceItem(edit_position, itemModel);
         adapter.notifyDataSetChanged();
     }
 }

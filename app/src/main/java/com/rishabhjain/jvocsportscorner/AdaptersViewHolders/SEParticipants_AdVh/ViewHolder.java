@@ -47,13 +47,14 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnLongCl
         else{       // if the textviews inside any of the linear layout is clicked
             getClickedReferences((ViewGroup) item.getParent().getParent());
         }
+        final int delete_position = this.getLayoutPosition();
         AlertDialog.Builder dialog = new AlertDialog.Builder(SEParticipants.getSEParticipantsAcInstance());
         dialog.setTitle("Remove participant").setMessage("Surely remove the participant: " + clicked_name.getText().toString() + " ?");
         dialog.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 System.out.println(clicked_name.getText().toString() + " " + clicked_mem_no.getText().toString());
-                refreshRecyclerView();
+                SEParticipants.deleteRVItemAt(delete_position);
             }
         });
 

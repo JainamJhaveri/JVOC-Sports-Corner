@@ -178,27 +178,24 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         MainActivity.getMainAcInstance().startActivity(i);
     }
 
-    private void refreshRecyclerView() {
-
-    }
-
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.delete_menu:
                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.getMainAcInstance());
+                final int delete_position = this.getLayoutPosition();
                 dialog.setTitle("Delete Event").setMessage("Surely delete the sub event " + clicked_event_name.getText().toString() + " ?");
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        refreshRecyclerView();
+                        System.out.println(delete_position + " inside events_advh view holder");
+                        EventsFragment.deleteRVItemAt(delete_position);
                     }
                 });
 
                 dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 dialog.create();

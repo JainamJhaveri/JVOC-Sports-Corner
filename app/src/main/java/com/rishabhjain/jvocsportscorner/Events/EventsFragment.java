@@ -48,8 +48,8 @@ public class EventsFragment extends Fragment {
 
     private static EventsFragment event_fragment_instance;
     private final String TAG = this.getClass().getSimpleName();
-    RecyclerView recyclerView;
-    ContentAdapter adapter;
+    private static RecyclerView recyclerView;
+    private static ContentAdapter adapter;
     private List<ItemModel> models = null;
     private String[] eventnames, venues, dates, times, participants;
 
@@ -93,7 +93,7 @@ public class EventsFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ADD_EVENT_REQ_CODE || requestCode == EDIT_EVENT_REQ_CODE) {
 
-            if(resultCode == EVENT_NOT_ADDED) return;
+            if (resultCode == EVENT_NOT_ADDED) return;
 
             Bundle extras = data.getExtras();
             String eventname = extras.getString(TAG_EVENTNAME);
@@ -103,24 +103,16 @@ public class EventsFragment extends Fragment {
             String endtime = extras.getString(TAG_ENDTIME);
 
             if (resultCode == EVENT_ADDED) {
-                Log.e(TAG, "onActivityResult: event added" );
-                addtoRecyclerView(eventname, venue, date, starttime, endtime);
+                Log.e(TAG, "onActivityResult: event added");
+                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, "0");
+                addRVItem(itemModel);
             } else if (resultCode == EVENT_EDITED) {
                 int edit_position = extras.getInt(TAG_EDIT_POSITION);
                 String no_of_participants = extras.getString(TAG_UNIQUEPARTICIPANTS);
-                Log.e(TAG, "onActivityResult: request code: " + EDIT_EVENT_REQ_CODE + ", edit position: " + edit_position);
-                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, no_of_participants); // TODO: no of participants should be set to its original value from here
-                ContentAdapter.replaceItem(edit_position, itemModel);
-                adapter.notifyDataSetChanged();
+                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, no_of_participants);
+                editRVItem(edit_position, itemModel);
             }
         }
-
-    }
-
-    private void addtoRecyclerView(String eventname, String venue, String date, String starttime, String endtime) {
-        ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, "0");
-        ContentAdapter.addItem(itemModel);
-        adapter.notifyDataSetChanged();
     }
 
     private void initializeList() {
@@ -169,5 +161,20 @@ public class EventsFragment extends Fragment {
         i.putExtra(TAG_EDIT_POSITION, edit_position);
         i.putExtra(TAG_EDITFLAG, true);
         event_fragment_instance.startActivityForResult(i, EDIT_EVENT_REQ_CODE);
+    }
+
+    private void editRVItem(int edit_position, ItemModel itemModel) {
+        ContentAdapter.replaceItem(edit_position, itemModel);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void addRVItem(ItemModel itemModel) {
+        ContentAdapter.addItem(itemModel);
+        adapter.notifyDataSetChanged();
+    }
+
+    public static void deleteRVItemAt(int position) {
+        ContentAdapter.deleteItem(position);
+        adapter.notifyDataSetChanged();
     }
 }

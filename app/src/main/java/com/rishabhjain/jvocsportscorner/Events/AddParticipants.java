@@ -87,23 +87,14 @@ public class AddParticipants extends AppCompatActivity implements SearchView.OnQ
                 finish();
                 return true;
             case R.id.done_menu:
-
                 Intent output = new Intent();
-                output.putExtra(Constants.TAG_ADDED_PARTICIPANTS_ARRAY, getSelectedParticipants());
+                System.out.println("From Addparticipants: \n\n" + ContentAdapter.getSelectedParticipants());
+                output.putExtra(Constants.TAG_ADDED_PARTICIPANTS_ARRAY, ContentAdapter.getSelectedParticipants());
                 setResult(PARTICIPANTS_ADDED, output);
                 finish();
                 return true;
         }
         return false;
-    }
-
-    private ArrayList<ItemModel> getSelectedParticipants() {
-        ArrayList<ItemModel> selectedParticipants = null;
-        for (ItemModel model: models) {
-            // TODO: Check for each ticked participants and add them to selectedParticipants
-        }
-
-        return selectedParticipants;
     }
 
     private void initializeList() {

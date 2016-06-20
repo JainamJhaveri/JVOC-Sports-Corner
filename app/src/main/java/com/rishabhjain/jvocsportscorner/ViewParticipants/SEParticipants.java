@@ -3,6 +3,7 @@ package com.rishabhjain.jvocsportscorner.ViewParticipants;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,10 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SEParticipants_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SEParticipants_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.Events.AddParticipants;
+import com.rishabhjain.jvocsportscorner.General.DividerItemDecoration;
 import com.rishabhjain.jvocsportscorner.R;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import java.util.List;
 import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_PARTICIPANTS_REQ_CODE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.PARTICIPANTS_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDED_PARTICIPANTS_ARRAY;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
@@ -110,10 +112,17 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == PARTICIPANTS_ADDED) {
             if (requestCode == ADD_PARTICIPANTS_REQ_CODE) {
-                // recyclerview should be updated here
+                System.out.println("participants added");
+                Bundle extras = data.getExtras();
+                ArrayList<Parcelable> addedPList = extras.getParcelableArrayList(TAG_ADDED_PARTICIPANTS_ARRAY);
+                for(int i=0; i<addedPList.size(); i++){
+                    System.out.println(addedPList.get(i));
+                    com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddParticipants_AdVh.ItemModel item = (com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddParticipants_AdVh.ItemModel) addedPList.get(i);
+                    addRVItem(new ItemModel(item.getName(), item.getMem_no(), item.getGender(), item.getBdate()));
+                }
             }
         } else if (resultCode == PARTICIPANTS_NOT_ADDED) {
-            // called when back button is pressed from AddSubEvent class
+            System.out.println("participants not added");
         }
     }
 
@@ -158,5 +167,10 @@ public class SEParticipants extends AppCompatActivity implements SearchView.OnQu
 
     public static Activity getSEParticipantsAcInstance() {
         return activity;
+    }
+
+    private void addRVItem(ItemModel itemModel) {       // TODO: AddParticipant.php will be called from here, check for duplication on server side before insertion
+        ContentAdapter.addItem(itemModel);
+        adapter.notifyDataSetChanged();
     }
 }

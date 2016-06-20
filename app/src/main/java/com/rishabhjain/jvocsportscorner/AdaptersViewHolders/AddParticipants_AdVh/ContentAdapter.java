@@ -7,14 +7,20 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jainu on 10/6/16.
- */
 public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final List<ItemModel> models;
+    private static List<ItemModel> models = null;
 
     public ContentAdapter(List<ItemModel> models) {
-        this.models = new ArrayList<>(models);
+        ContentAdapter.models = new ArrayList<>(models);
+    }
+
+    public static ArrayList<ItemModel> getSelectedParticipants(){
+        ArrayList<ItemModel> selectedmodels = new ArrayList<>();
+        for (ItemModel model: models)
+            if (model.isSelected())
+                selectedmodels.add(model);
+
+        return selectedmodels;
     }
 
     public void animateTo(List<ItemModel> models) {

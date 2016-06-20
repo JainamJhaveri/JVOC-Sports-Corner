@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private final List<ItemModel> models;
+    private static List<ItemModel> models = null;
 
     public ContentAdapter(List<ItemModel> models) {
         this.models = new ArrayList<>(models);
@@ -82,5 +82,9 @@ public class ContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemCount() {
         return models.size();
+    }
+
+    public static void addItem(ItemModel model) {
+        models.add(model);
     }
 }

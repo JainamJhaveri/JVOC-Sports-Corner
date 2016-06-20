@@ -41,7 +41,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end"
-                android:background="@drawable/circular_green_bg"
+                android:background="@drawable/circular_pink_bg"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="@color/white"

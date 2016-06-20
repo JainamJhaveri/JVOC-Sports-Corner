@@ -9,10 +9,8 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,122 +20,72 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddEvent_AdVh.ContentAdapter;
-import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddEvent_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
 import java.util.Locale;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.ADD_SUB_EVENT_REQ_CODE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_ADDED;
-import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_NOT_ADDED;
-import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_ADDED;
-import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_EDITED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EDITFLAG;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EDIT_POSITION;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
 public class AddEvent extends AppCompatActivity {
 
+    private final String TAG = this.getClass().getSimpleName();
     Button editDate, startTimeEdit, endTimeEdit;
     EditText et_event_name, et_event_venue;
-    TextView dateTv, startTimeTv, endTimeTv, noOfParticipantsTV;
-    private List<ItemModel> models;
-    private String[] sub_event_names, sub_event_participants;
-    private static AddEvent activity;
-
+    TextView dateTv, startTimeTv, endTimeTv;
+    boolean editFlag = false;
+    int edit_position = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
+        setupActionBar();
         getReferences();
         setFieldValues();
-        setupActionBar();
         setupEditButtons();
-        activity = this;
-        setupRecyclerView();
     }
 
     private void setFieldValues() {
         Bundle extras = getIntent().getExtras();
         setTitle(extras.getString(TAG_ADDEVENTTITILE));
-
         et_event_name.setText(extras.getString(TAG_EVENTNAME));
         et_event_venue.setText(extras.getString(TAG_EVENTVENUE));
         dateTv.setText(extras.getString(TAG_EVENTDATE));
         startTimeTv.setText(extras.getString(TAG_STARTTIME));
         endTimeTv.setText(extras.getString(TAG_ENDTIME));
-        noOfParticipantsTV.setText(extras.getString(TAG_UNIQUEPARTICIPANTS));
+        edit_position = extras.getInt(TAG_EDIT_POSITION);
+        editFlag = extras.getBoolean(TAG_EDITFLAG);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_subevent, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.add_new_sub_event_menu:
-                Intent intent = new Intent(this, AddSubEvent.class);
-                startActivityForResult(intent, ADD_SUB_EVENT_REQ_CODE);
-                return true;
             case android.R.id.home:
-                setResult(EVENT_NOT_ADDED);
                 finish();
                 return true;
         }
         return false;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == SUB_EVENT_ADDED) {
-            if (requestCode == ADD_SUB_EVENT_REQ_CODE) {
-                // recyclerview should be updated here
-            }
-        } else if (resultCode == SUB_EVENT_NOT_ADDED) {
-            // called when back button is pressed from AddSubEvent class
-        }
-
-    }
-
-    private void initializeList() {
-        models = new ArrayList<>();
-        sub_event_names = getResources().getStringArray(R.array.sub_event_names);
-        sub_event_participants = getResources().getStringArray(R.array.sub_event_participants);
-        for (int i = 0; i < sub_event_names.length; i++) {
-            models.add(new ItemModel(sub_event_names[i], sub_event_participants[i]));
-        }
-    }
-
-    private void setupRecyclerView() {
-        initializeList();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        ContentAdapter adapter = new ContentAdapter(models);
-        assert recyclerView != null;
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    }
-
     private void setupEditButtons() {
         VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_edit_black_24dp, getTheme());
         if (indicator != null) {
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.dark_grey, getTheme()));
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.medium_grey, getTheme()));
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             editDate.setBackground(indicator);
@@ -156,10 +104,11 @@ public class AddEvent extends AppCompatActivity {
         dateTv = (TextView) findViewById(R.id.dateTV);
         startTimeTv = (TextView) findViewById(R.id.startTimeTV);
         endTimeTv = (TextView) findViewById(R.id.endTimeTV);
-        noOfParticipantsTV = (TextView) findViewById(R.id.total_no_of_participants);
     }
 
     private void setupActionBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         ActionBar supportActionBar = getSupportActionBar();
         assert supportActionBar != null;
         supportActionBar.setDisplayHomeAsUpEnabled(true);
@@ -189,19 +138,53 @@ public class AddEvent extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        setResult(EVENT_NOT_ADDED);
-        finish();
+    public void eventDoneClicked(View view) {
+        if (validateInputFields() && validateTimeFields() ) {
+            Intent output = new Intent();
+            output.putExtra(TAG_EVENTNAME, et_event_name.getText().toString());
+            output.putExtra(TAG_EVENTVENUE, et_event_venue.getText().toString());
+            output.putExtra(TAG_EVENTDATE, dateTv.getText().toString());
+            output.putExtra(TAG_STARTTIME, startTimeTv.getText().toString());
+            output.putExtra(TAG_ENDTIME, endTimeTv.getText().toString());
+
+            Log.e(TAG, "eventDoneClicked: " +edit_position + " editFlag = " +editFlag );
+            if(editFlag){       // add event ac was clicked from editing mode
+                output.putExtra(TAG_EDIT_POSITION, edit_position);
+                editFlag = false;
+                edit_position = -1;
+                setResult(EVENT_EDITED);
+                finish();
+                return;
+            }
+
+            setResult(EVENT_ADDED, output);
+            finish();
+        }
     }
 
-    public void eventDoneClicked(View view) {
-        if (validateInputFields()) {
-            setResult(EVENT_ADDED);
-            finish();
-        } else {
-            Toast.makeText(AddEvent.this, "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
+    private boolean validateTimeFields() {
+        String startTimeString = startTimeTv.getText().toString();
+        String endTimeString = endTimeTv.getText().toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+        Calendar startCal = Calendar.getInstance();
+        Calendar endCal = Calendar.getInstance();
+
+        Date startdate = null, enddate = null;
+        try {
+            startdate = sdf.parse(startTimeString);
+            enddate = sdf.parse(endTimeString);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+        startCal.setTime(startdate);
+        endCal.setTime(enddate);
+
+        if( startCal.before(endCal)){
+            return true;
+        }
+        Toast.makeText(AddEvent.this, "Start time should be smaller than end time", Toast.LENGTH_SHORT).show();
+
+        return false;
     }
 
     public void startTimeClicked(View view) {
@@ -275,15 +258,15 @@ public class AddEvent extends AppCompatActivity {
     }
 
     private boolean validateInputFields() {
-        return !(isEmpty(et_event_name) || isEmpty(et_event_venue));
+        if (isEmpty(et_event_name) || isEmpty(et_event_venue)){
+            Toast.makeText(AddEvent.this, "Input fields cannot be empty", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else return true;
     }
 
     private boolean isEmpty(EditText etText) {
         return etText.getText().toString().trim().length() == 0;
-    }
-
-    public static AddEvent getAddEventAcInstance() {
-        return activity;
     }
 
 }

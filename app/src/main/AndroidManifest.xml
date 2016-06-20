@@ -54,6 +54,7 @@
         <activity
             android:name=".Media.DetailImageAc"
             android:screenOrientation="portrait" />
+        <activity android:name=".Events.SubEvents"></activity>
     </application>
 
 </manifest>

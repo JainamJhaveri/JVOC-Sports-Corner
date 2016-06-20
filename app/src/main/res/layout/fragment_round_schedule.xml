@@ -15,6 +15,7 @@
         android:padding="5dp" />
 
     <ScrollView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -61,7 +62,11 @@
         </LinearLayout>
     </ScrollView>
 
-
-
-
 </LinearLayout>
+
+
+<!--
+
+TODO: INSERT THE LINEAR LAYOUT OF < ROUND > AS HEADER OF RECYCLER VIEW
+and not as a child of scroll view
+-->

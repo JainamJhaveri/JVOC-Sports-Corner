@@ -1,8 +1,9 @@
 package com.rishabhjain.jvocsportscorner.Events;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,14 +21,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.SUB_EVENT_NOT_ADDED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_AGE_GROUP;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_GAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_GENDER;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_TEAM_SIZE;
 
 public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener {
 
 
     CheckBox CB_age_senior, CB_age_junior, CB_gender_male, CB_gender_female;
     Spinner gameSpinner, teamOfSpinner;
-    String selectedGame, selectedTeamMembers, selectedAgeGroup, selectedGender;
+    String selectedGame, selectedTeamSize, selectedAgeGroup, selectedGender;
     RadioButton Radio_openForBoth, Radio_exclusive;
     RadioGroup RG_gender;
 
@@ -87,10 +93,12 @@ public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItem
 
     public void subEventDoneClicked(View view) {
         if (oneAgeGroupSelected() && properGenderCBSelected()) {
-            Toast.makeText(AddSubEvent.this,
-                    selectedGame + " " + selectedTeamMembers + " " +selectedAgeGroup + " " +selectedGender,
-                    Toast.LENGTH_SHORT).show();
-            setResult(SUB_EVENT_ADDED);
+            Intent output = new Intent();
+            output.putExtra(TAG_GAME, selectedGame);
+            output.putExtra(TAG_TEAM_SIZE, selectedTeamSize);
+            output.putExtra(TAG_AGE_GROUP, selectedAgeGroup);
+            output.putExtra(TAG_GENDER, selectedGender);
+            setResult(SUB_EVENT_ADDED, output);
             finish();
         }
     }
@@ -112,14 +120,17 @@ public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItem
         selectedGender = "";
         if (Radio_exclusive.isChecked()) {
             if (CB_gender_male.isChecked()){
-                selectedGender += "Male";
+                selectedGender += "M";
             }
             if(CB_gender_female.isChecked()){
-                selectedGender += "Female";
+                if (CB_gender_male.isChecked()){
+                    selectedGender += ",";
+                }
+                selectedGender += "F";
             }
             return;
         }
-        selectedGender += "Open";
+        selectedGender = "O";
     }
 
     private boolean oneAgeGroupSelected() {
@@ -135,8 +146,11 @@ public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItem
         selectedAgeGroup = "";
         if(CB_age_junior.isChecked())
             selectedAgeGroup += "Juniors";
-        if(CB_age_senior.isChecked())
+        if(CB_age_senior.isChecked()){
+            if(CB_age_junior.isChecked())
+                selectedAgeGroup += ",";
             selectedAgeGroup += "Seniors";
+        }
     }
 
     @Override
@@ -170,7 +184,7 @@ public class AddSubEvent extends AppCompatActivity implements AdapterView.OnItem
                 selectedGame = gameSpinner.getItemAtPosition(position).toString();
                 break;
             case R.id.teamOfSpinner:
-                selectedTeamMembers = teamOfSpinner.getItemAtPosition(position).toString();
+                selectedTeamSize = teamOfSpinner.getItemAtPosition(position).toString();
                 break;
         }
     }

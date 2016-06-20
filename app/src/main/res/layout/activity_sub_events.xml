@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Events.SubEvents">
+
+    <include layout="@layout/toolbarlayout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@color/light_grey"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center|left"
+            android:text="Total Participants: "
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_total_no_of_participants"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/circular_pink_bg"
+            android:gravity="center"
+            android:text="108"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>

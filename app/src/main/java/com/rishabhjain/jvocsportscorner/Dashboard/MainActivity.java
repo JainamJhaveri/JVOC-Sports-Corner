@@ -20,9 +20,6 @@ import com.rishabhjain.jvocsportscorner.Media.MediaFragment;
 import com.rishabhjain.jvocsportscorner.R;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.ViewPEFragment;
 
-import static com.rishabhjain.jvocsportscorner.General.MyPreferences.getSPTitle;
-import static com.rishabhjain.jvocsportscorner.General.MyPreferences.setSPTitle;
-
 public class MainActivity extends AppCompatActivity {
 
 //    private final String TAG = this.getClass().getSimpleName();
@@ -49,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println(".. backpressed from non-dashboard fragment.. " +fragment.getClass().getSimpleName());
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
-        setSPTitle(getApplicationContext(), "Dashboard");
-        setTitle(getSPTitle(getApplicationContext()));
+        setTitle("Dashboard");
         navigationView.getMenu().getItem(0).setChecked(true);
 
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START))
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        title = getSPTitle(this);
+        setTitle("Dashboard");
         addInitialDashboardFragment(savedInstanceState);
 
         // Adding Toolbar to Main screen
@@ -81,10 +77,9 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new DashboardFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_container, new DashboardFragment()).commit();
                 setTitle("Dashboard");
-                setSPTitle(this, "Dashboard");
             }
         }else{
-            setTitle(getSPTitle(this));
+            setTitle("Dashboard");
         }
     }
 
@@ -147,8 +142,7 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                         }
-                        setSPTitle(getApplicationContext(), title);
-                        setTitle(getSPTitle(getApplicationContext()));
+                        setTitle(title);
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, fragment).commit();
                         return true;
                     }

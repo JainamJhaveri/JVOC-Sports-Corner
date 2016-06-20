@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddEvent_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SubEvents_AdVh;
 
 public class ItemModel {
     private final String sub_event_name, no_of_participants;

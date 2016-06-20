@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
-    private static final int LENGTH = 5;
-    private final String TAG = this.getClass().getSimpleName();
-    private final List<ItemModel> models;
+public class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+
+    private static List<ItemModel> models;
 
     public ContentAdapter(List<ItemModel> models) {
         this.models = new ArrayList<>(models);
@@ -21,14 +20,22 @@ public class ContentAdapter extends RecyclerView.Adapter<ViewHolder>{
         return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
     }
 
+    public static void addItem(ItemModel model) {
+        models.add(model);
+    }
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ItemModel itemModel = models.get(position % 2 );
+        ItemModel itemModel = models.get(position);
         holder.bind(itemModel);
     }
 
     @Override
     public int getItemCount() {
-        return LENGTH;
+        return models.size();
+    }
+
+    public static void replaceItem(int edit_position, ItemModel itemModel) {
+        models.set(edit_position, itemModel);
     }
 }

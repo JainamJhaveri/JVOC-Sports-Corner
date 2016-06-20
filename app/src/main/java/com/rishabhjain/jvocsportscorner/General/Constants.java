@@ -15,7 +15,13 @@ public class Constants {
     public static final String TAG_ADDEVENTTITILE = "add_event_title";
     public static final String TAG_SUBEVENT_NAME = "sub_event_name";
     public static final String TAG_SUBEVENT_PARTICIPANTS = "sub_event_participants";
-    public static final String TAG_IMG_POSITION = "img_position";
+    public static final String TAG_GAME = "game";
+    public static final String TAG_TEAM_SIZE = "team_size";
+    public static final String TAG_AGE_GROUP = "age_group";
+    public static final String TAG_GENDER = "gender";
+    public static final String TAG_EDITFLAG = "edit_flag";
+    public static final String TAG_EDIT_POSITION = "edit_position";
+//    public static final String TAG_IMG_POSITION = "img_position";
 
     public static final String DEFAULT_EVENTNAME = "";
     public static final String DEFAULT_EVENTVENUE = "";
@@ -37,6 +43,10 @@ public class Constants {
     public static final int ADD_SUB_EVENT_REQ_CODE = 201;
     public static final int ADD_PARTICIPANTS_REQ_CODE = 202;
 
+    public static final int EDIT_EVENT_REQ_CODE = 250;
+    public static final int EVENT_EDITED = 350;
+
+
     private static String getMyCurrentDate() {
         Calendar myCalendar = Calendar.getInstance();
         String myFormat = "dd-MM-yyyy"; //In which you need put here
@@ -45,19 +55,19 @@ public class Constants {
         return sdf.format(myCalendar.getTime());
     }
 
-    private static String getMyCurrentTime(){
+    private static String getMyCurrentTime() {
         Calendar myCalendar = Calendar.getInstance();
         int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
         int minute = myCalendar.get(Calendar.MINUTE);
         int format = myCalendar.get(Calendar.AM_PM);
 
         String dispHour = String.valueOf(hour), dispMinute = String.valueOf(minute);
-        if (hour < 10)
-            dispHour = "0" + hour;
-        if (minute < 10)
-            dispMinute = "0" + minute;
-        String am_pm = ( format == 0 ) ? "AM" : "PM";
-        return dispHour + ":" + dispMinute + " " +am_pm ;
+
+        if( hour > 12 )     hour -= 12;
+        if (hour < 10)      dispHour = "0" + hour;
+        if (minute < 10)    dispMinute = "0" + minute;
+        String am_pm = (format == 0) ? "AM" : "PM";
+        return dispHour + ":" + dispMinute + " " + am_pm;
     }
 
 }

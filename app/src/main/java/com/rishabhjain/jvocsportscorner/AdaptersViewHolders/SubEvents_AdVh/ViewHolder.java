@@ -1,4 +1,4 @@
-package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.AddEvent_AdVh;
+package com.rishabhjain.jvocsportscorner.AdaptersViewHolders.SubEvents_AdVh;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,11 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rishabhjain.jvocsportscorner.Events.AddEvent;
 import com.rishabhjain.jvocsportscorner.R;
+import com.rishabhjain.jvocsportscorner.Events.SubEvents;
 import com.rishabhjain.jvocsportscorner.ViewParticipants.SEParticipants;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.*;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_NAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_SUBEVENT_PARTICIPANTS;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     private final TextView sub_event_name;
@@ -40,12 +41,12 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     @Override
     public boolean onLongClick(View item) {
         getClickedReferences(item);
-        AlertDialog.Builder dialog = new AlertDialog.Builder(AddEvent.getAddEventAcInstance());
+        AlertDialog.Builder dialog = new AlertDialog.Builder(SubEvents.getSubEventsAcInstance());
         dialog.setTitle("Delete subevent").setMessage("Surely Delete the sub event " + clicked_sub_event_name.getText().toString() + " ?");
         dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                System.out.println(clicked_sub_event_name.getText().toString() + " " + clicked_no_of_participants.getText().toString());
+
                 refreshRecyclerView();
             }
         });
@@ -75,12 +76,12 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void startAddSubEventActivity() {
-        Intent i = new Intent(AddEvent.getAddEventAcInstance(), SEParticipants.class);
+        Intent i = new Intent(SubEvents.getSubEventsAcInstance(), SEParticipants.class);
 
         i.putExtra(TAG_SUBEVENT_NAME, clicked_sub_event_name.getText().toString());
         i.putExtra(TAG_SUBEVENT_PARTICIPANTS, clicked_no_of_participants.getText().toString());
 
-        AddEvent.getAddEventAcInstance().startActivity(i);
+        SubEvents.getSubEventsAcInstance().startActivity(i);
     }
 
 

@@ -33,6 +33,7 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.DEFAULT_STARTTI
 import static com.rishabhjain.jvocsportscorner.General.Constants.EDIT_EVENT_REQ_CODE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_EDITED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_NOT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EDITFLAG;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EDIT_POSITION;
@@ -41,6 +42,7 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
 public class EventsFragment extends Fragment {
 
@@ -90,6 +92,9 @@ public class EventsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == ADD_EVENT_REQ_CODE || requestCode == EDIT_EVENT_REQ_CODE) {
+
+            if(resultCode == EVENT_NOT_ADDED) return;
+
             Bundle extras = data.getExtras();
             String eventname = extras.getString(TAG_EVENTNAME);
             String venue = extras.getString(TAG_EVENTVENUE);
@@ -102,8 +107,9 @@ public class EventsFragment extends Fragment {
                 addtoRecyclerView(eventname, venue, date, starttime, endtime);
             } else if (resultCode == EVENT_EDITED) {
                 int edit_position = extras.getInt(TAG_EDIT_POSITION);
+                String no_of_participants = extras.getString(TAG_UNIQUEPARTICIPANTS);
                 Log.e(TAG, "onActivityResult: request code: " + EDIT_EVENT_REQ_CODE + ", edit position: " + edit_position);
-                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, "0");
+                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, no_of_participants); // TODO: no of participants should be set to its original value from here
                 ContentAdapter.replaceItem(edit_position, itemModel);
                 adapter.notifyDataSetChanged();
             }
@@ -145,5 +151,23 @@ public class EventsFragment extends Fragment {
 
     public static Context getEventsInstance() {
         return event_fragment_instance.getActivity();
+    }
+
+
+    public static void startEditAddEventAc(String event_name_str, String venue_str, String date_str, String time_str, String no_of_participants_str, int edit_position) {
+
+        Intent i = new Intent(getEventsInstance(), AddEvent.class);
+        i.putExtra(TAG_EVENTNAME, event_name_str);
+        i.putExtra(TAG_EVENTVENUE, venue_str);
+        i.putExtra(TAG_EVENTDATE, date_str);
+        String startTimeString = time_str.substring(0, 8);
+        String endTimeString = time_str.substring(12);
+        i.putExtra(TAG_STARTTIME, startTimeString);
+        i.putExtra(TAG_ENDTIME, endTimeString);
+        i.putExtra(TAG_UNIQUEPARTICIPANTS, no_of_participants_str);
+        i.putExtra(TAG_ADDEVENTTITILE, event_name_str);
+        i.putExtra(TAG_EDIT_POSITION, edit_position);
+        i.putExtra(TAG_EDITFLAG, true);
+        event_fragment_instance.startActivityForResult(i, EDIT_EVENT_REQ_CODE);
     }
 }

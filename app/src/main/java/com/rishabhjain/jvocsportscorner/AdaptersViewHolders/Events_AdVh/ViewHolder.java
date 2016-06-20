@@ -13,19 +13,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
-import com.rishabhjain.jvocsportscorner.Events.AddEvent;
 import com.rishabhjain.jvocsportscorner.Events.EventsFragment;
 import com.rishabhjain.jvocsportscorner.Events.SubEvents;
 import com.rishabhjain.jvocsportscorner.R;
 
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ADDEVENTTITILE;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EDITFLAG;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EDIT_POSITION;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
-import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
 
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener, PopupMenu.OnMenuItemClickListener {
@@ -34,6 +26,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     Button b;
     TextView clicked_event_name, clicked_no_of_participants, clicked_venue, clicked_date, clicked_time;
     int edit_position = -1;
+
     // inflate the item_event and not fragment_events because the textviews referenced are a part of item_event and not fragment_events
     ViewHolder(LayoutInflater inflater, ViewGroup parent) {
         super(inflater.inflate(R.layout.item_event, parent, false));
@@ -167,22 +160,15 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
     }
 
     private void editAddEventActivity() {
-        Intent i = new Intent(EventsFragment.getEventsInstance(), AddEvent.class);
-        i.putExtra(TAG_EVENTNAME, clicked_event_name.getText().toString());
-        i.putExtra(TAG_EVENTVENUE, clicked_venue.getText().toString());
-        i.putExtra(TAG_EVENTDATE, clicked_date.getText().toString());
-        String startTimeString = (clicked_time.getText().toString()).substring(0, 8);
-        String endTimeString = (clicked_time.getText().toString()).substring(12);
-        i.putExtra(TAG_STARTTIME, startTimeString);
-        i.putExtra(TAG_ENDTIME, endTimeString);
-        i.putExtra(TAG_UNIQUEPARTICIPANTS, clicked_no_of_participants.getText().toString());
-        i.putExtra(TAG_ADDEVENTTITILE, clicked_event_name.getText().toString());
-        i.putExtra(TAG_EDIT_POSITION, edit_position);
-        i.putExtra(TAG_EDITFLAG, true);   // TODO: editing mode data update in RV
-        
-//        MainActivity.getMainAcInstance().startActivityForResult(i, EDIT_EVENT_REQ_CODE);
-    }
+        String event_name_str, venue_str, date_str, time_str, no_of_participants_str;
+        event_name_str = clicked_event_name.getText().toString();
+        venue_str = clicked_venue.getText().toString();
+        date_str = clicked_date.getText().toString();
+        time_str = clicked_time.getText().toString();
+        no_of_participants_str = clicked_no_of_participants.getText().toString();
 
+        EventsFragment.startEditAddEventAc(event_name_str, venue_str, date_str, time_str, no_of_participants_str, edit_position);
+    }
 
 
     private void startSubEventsActivity() {

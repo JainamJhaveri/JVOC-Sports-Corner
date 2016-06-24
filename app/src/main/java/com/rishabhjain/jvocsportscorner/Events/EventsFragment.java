@@ -1,6 +1,7 @@
 package com.rishabhjain.jvocsportscorner.Events;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +16,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.Events_AdVh.ContentAdapter;
 import com.rishabhjain.jvocsportscorner.AdaptersViewHolders.Events_AdVh.ItemModel;
 import com.rishabhjain.jvocsportscorner.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +53,24 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_ENDTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTDATE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTNAME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_EVENTVENUE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_ENDDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_ENDTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_EVENTNAME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_EVENTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_ISNOTIFIED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_ISNOTIFIEDFORSCHEDULE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_NOOFPARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_STARTDATE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_STARTTIME;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_SUCCESS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_JSON_VENUE;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_NOTIFIED;
+import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_NOTIFIED_FOR_SCHEDULE;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_STARTTIME;
 import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTICIPANTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.URL_GETALLEVENTS;
+import static com.rishabhjain.jvocsportscorner.General.Constants.getSpecificTime;
+import static com.rishabhjain.jvocsportscorner.General.Constants.reversedate;
 
 public class EventsFragment extends Fragment {
 
@@ -51,7 +79,8 @@ public class EventsFragment extends Fragment {
     private static RecyclerView recyclerView;
     private static ContentAdapter adapter;
     private List<ItemModel> models = null;
-    private String[] eventnames, venues, dates, times, participants;
+    private String[] eventnames, venues, dates, times, participants, isnotifiedforschedule, isnotified ;
+    private ProgressDialog progressDialog;
 
     public EventsFragment() {
     }
@@ -104,12 +133,18 @@ public class EventsFragment extends Fragment {
 
             if (resultCode == EVENT_ADDED) {
                 Log.e(TAG, "onActivityResult: event added");
-                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, "0");
+                // when a new event is added no of participants will be 0, isnotified = false and isnotifiedforschedule = false
+                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, "0", "0", "0");
                 addRVItem(itemModel);
             } else if (resultCode == EVENT_EDITED) {
                 int edit_position = extras.getInt(TAG_EDIT_POSITION);
                 String no_of_participants = extras.getString(TAG_UNIQUEPARTICIPANTS);
-                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime, no_of_participants);
+                // as events will only be editable if they are not notified and not notified of their schedule, their default value will be 0
+                String is_notified = extras.getString(TAG_NOTIFIED, "0");
+                String is_notified_for_schedule= extras.getString(TAG_NOTIFIED_FOR_SCHEDULE, "0");
+
+                ItemModel itemModel = new ItemModel(eventname, venue, date, starttime + " to " + endtime,
+                        no_of_participants, is_notified, is_notified_for_schedule);
                 editRVItem(edit_position, itemModel);
             }
         }
@@ -117,15 +152,92 @@ public class EventsFragment extends Fragment {
 
     private void initializeList() {     // TODO: This list will be populated from the GetAllEvents.php
         models = new ArrayList<>();
+/*
         eventnames = getContext().getResources().getStringArray(R.array.eventNames);
         venues = getContext().getResources().getStringArray(R.array.eventVenues);
         dates = getContext().getResources().getStringArray(R.array.eventDates);
         times = getContext().getResources().getStringArray(R.array.eventTimes);
         participants = getContext().getResources().getStringArray(R.array.eventTotalParticipants);
+        isnotified = getContext().getResources().getStringArray(R.array.isNotifiedArray);
+        isnotifiedforschedule = getContext().getResources().getStringArray(R.array.isNotifiedForScheduleArray);
 
         for (int i = 0; i < eventnames.length; i++) {
-            models.add(new ItemModel(eventnames[i], venues[i], dates[i], times[i], participants[i]));
+            models.add(new ItemModel(eventnames[i], venues[i], dates[i], times[i],
+                    participants[i], isnotified[i], isnotifiedforschedule[i]));
         }
+
+*/
+        /*
+
+      "eventName": "Indoor Tournament",
+      "startDate": "2016-01-11",
+      "endDate": "2015-01-10",
+      "startTime": "08:25:00",
+      "endTime": "16:00:00",
+      "venue": "1st floor",
+      "noOfParticipants": "25",
+      "isNotified": "0",
+      "isNotifiedforSchedule": "0"
+        * */
+
+        String urlGetallevents = URL_GETALLEVENTS;
+        RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, urlGetallevents, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    int success = response.getInt(TAG_JSON_SUCCESS);
+                    System.out.println("success: " + success);
+                    if (success != 1) {
+                        Log.e(TAG, "getProductsDataFromJson: no products found, success = 0");
+                        return;
+                    }
+                    JSONArray events = response.getJSONArray(TAG_JSON_EVENTS);
+                    if( events.length() <= 0) {
+                        Log.e(TAG, "onResponse: No events found ");
+                        return;
+                    }
+                    models.clear();
+                    for (int i = 0; i < events.length(); i++) {
+                        JSONObject event = events.getJSONObject(i);
+
+                        String eventName = event.getString(TAG_JSON_EVENTNAME);
+                        String startDate = event.getString(TAG_JSON_STARTDATE);
+                        String endDate = event.getString(TAG_JSON_ENDDATE);
+                        String startTime = event.getString(TAG_JSON_STARTTIME);
+                        String endTime = event.getString(TAG_JSON_ENDTIME);
+                        String venue = event.getString(TAG_JSON_VENUE);
+                        String noOfParticipants = event.getString(TAG_JSON_NOOFPARTICIPANTS);
+                        String isNotified = event.getString(TAG_JSON_ISNOTIFIED);
+                        String isNotifiedforSchedule = event.getString(TAG_JSON_ISNOTIFIEDFORSCHEDULE);
+
+                        startDate = reversedate(startDate);
+                        startTime = getSpecificTime(startTime);
+                        endTime = getSpecificTime(endTime);
+
+                        System.out.println( eventName +  " " +venue + " " +startDate + " " +endDate + " " +startTime + " "
+                                +endTime + " " +venue + " " + noOfParticipants + " " +isNotified + " " +isNotifiedforSchedule);
+                        addRVItem(new ItemModel(eventName, venue, startDate,
+                                startTime + " to " +endTime, noOfParticipants, isNotified, isNotifiedforSchedule ));
+                    }
+                    progressDialog.dismiss();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(EventsFragment.this.getContext(), "Error getting events data from internet", Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+
+        progressDialog = new ProgressDialog(this.getContext());
+        progressDialog.setMessage("Fetching The List Data....");
+        progressDialog.show();
     }
 
     @Override
@@ -166,7 +278,8 @@ public class EventsFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-    private void addRVItem(ItemModel itemModel) {                       // TODO: AddEvent.php will be called from here, check for duplication on server side before insertion
+    private void addRVItem(ItemModel itemModel) {// TODO: AddEvent.php will be called from here, check for duplication on server side before insertion
+
         ContentAdapter.addItem(itemModel);
         adapter.notifyDataSetChanged();
     }

@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rishabhjain.jvocsportscorner.Dashboard.MainActivity;
 import com.rishabhjain.jvocsportscorner.Events.EventsFragment;
@@ -23,7 +25,7 @@ import static com.rishabhjain.jvocsportscorner.General.Constants.TAG_UNIQUEPARTI
 public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener, PopupMenu.OnMenuItemClickListener {
     private final String TAG = this.getClass().getSimpleName();
     private TextView event_name, no_of_participants, venue, date, time;
-    Button b;
+    Button b, clicked_button ;
     TextView clicked_event_name, clicked_no_of_participants, clicked_venue, clicked_date, clicked_time;
     int edit_position = -1;
 
@@ -40,9 +42,12 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         date = (TextView) itemView.findViewById(R.id.card_date);
         time = (TextView) itemView.findViewById(R.id.card_time);
         b = (Button) itemView.findViewById(R.id.button_notify_all_participants);
+        Log.e(TAG, "getReferences: button reference received" );
+    }
 
-        b.setOnClickListener(this);
-
+    void setListeners(){
+        if(b.isEnabled())
+            b.setOnClickListener(this);
         event_name.setOnClickListener(this);
         no_of_participants.setOnClickListener(this);
         venue.setOnClickListener(this);
@@ -54,7 +59,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         venue.setOnLongClickListener(this);
         date.setOnLongClickListener(this);
         time.setOnLongClickListener(this);
-
     }
 
     void bind(ItemModel itemModel) {
@@ -63,6 +67,10 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         venue.setText(itemModel.getVenue());
         date.setText(itemModel.getDate());
         time.setText(itemModel.getTime());
+        System.out.println(itemModel.getIsNotified());
+        if( itemModel.getIsNotified().equals("1") )
+            viewButton((ViewGroup) itemView, false);
+        setListeners();
     }
 
     @Override
@@ -82,7 +90,7 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
                 public void onClick(DialogInterface dialogInterface, int i) {
                     System.out.println(clicked_event_name.getText().toString() + " " + clicked_date.getText().toString());
                     notifyAllParticipants(clicked_event_name.getText().toString(), clicked_date.getText().toString());
-                    updateButton(parent);
+                    viewButton(parent, false);
                 }
             });
 
@@ -113,6 +121,10 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         return parent.getId() == R.id.card_event_single_item;
     }
 
+    private boolean isnotifyButtonEnabled(View v) {
+        return clicked_button.isEnabled();
+    }
+
     private void getClickedReferences(View v) {
         ViewGroup parent = (ViewGroup) v.getParent();
         clicked_event_name = (TextView) parent.findViewById(R.id.event_name);
@@ -120,13 +132,19 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         clicked_date = (TextView) parent.findViewById(R.id.card_date);
         clicked_time = (TextView) parent.findViewById(R.id.card_time);
         clicked_no_of_participants = (TextView) parent.findViewById(R.id.no_of_participants);
+        ViewGroup gp = (ViewGroup) parent.getParent();
+        clicked_button = (Button) gp.findViewById(R.id.button_notify_all_participants);
     }
 
-    private void updateButton(ViewGroup parent) {
-        Button clicked_button = (Button) parent.findViewById(R.id.button_notify_all_participants);
-        parent.removeView(clicked_button);
-        TextView notified_tv = (TextView) parent.findViewById(R.id.notified_tv);
-        notified_tv.setVisibility(View.VISIBLE);
+    private void viewButton(ViewGroup parent, boolean wanttoviewbutton) {
+        if( ! wanttoviewbutton ) {
+            Log.e(TAG, "viewButton: removing views");
+            Button clicked_button = (Button) parent.findViewById(R.id.button_notify_all_participants);
+            clicked_button.setEnabled(false);
+//            parent.removeView(clicked_button);
+            TextView notified_tv = (TextView) parent.findViewById(R.id.notified_tv);
+            notified_tv.setVisibility(View.VISIBLE);
+        }
     }
 
     /*
@@ -149,6 +167,13 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
             getClickedReferences(v);
         }
 
+        if( ! isnotifyButtonEnabled(v) ){
+            Toast.makeText(EventsFragment.getEventsInstance(),
+                    "Participants already notified for the event hence editing or deleting can't be done",
+                    Toast.LENGTH_LONG).show();
+            return true;
+        }
+
         // creating popup Options Menu on long clicking any RV item. EDIT, DELETE should be the options.
         edit_position = this.getLayoutPosition();   // check out getAdapterPosition if this doesn't work
         PopupMenu popup = new PopupMenu(v.getContext(), v);
@@ -166,7 +191,6 @@ public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickL
         date_str = clicked_date.getText().toString();
         time_str = clicked_time.getText().toString();
         no_of_participants_str = clicked_no_of_participants.getText().toString();
-
         EventsFragment.startEditAddEventAc(event_name_str, venue_str, date_str, time_str, no_of_participants_str, edit_position);
     }
 

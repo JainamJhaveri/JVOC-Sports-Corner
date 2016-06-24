@@ -25,7 +25,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_ADDED;
 import static com.rishabhjain.jvocsportscorner.General.Constants.EVENT_EDITED;
@@ -129,8 +128,7 @@ public class AddEvent extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd-MM-yyyy"; //In which you need put here
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                 dateTv.setText(sdf.format(myCalendar.getTime()));
             }
 

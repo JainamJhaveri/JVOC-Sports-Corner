@@ -95,6 +95,16 @@
         <item>05:00 PM to 12:00 AM</item>
     </string-array>
 
+    <string-array name="isNotifiedArray">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="isNotifiedForScheduleArray">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
     <string-array name="eventTotalParticipants">
         <item>100</item>
         <item>120</item>

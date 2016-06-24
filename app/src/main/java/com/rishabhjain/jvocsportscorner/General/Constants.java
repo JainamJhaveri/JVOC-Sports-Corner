@@ -1,7 +1,9 @@
 package com.rishabhjain.jvocsportscorner.General;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class Constants {
@@ -12,6 +14,8 @@ public class Constants {
     public static final String TAG_STARTTIME = "start_time";
     public static final String TAG_ENDTIME = "end_time";
     public static final String TAG_UNIQUEPARTICIPANTS = "unique_participants";
+    public static final String TAG_NOTIFIED = "isNotified" ;
+    public static final String TAG_NOTIFIED_FOR_SCHEDULE = "isNotifiedForSchedule";
     public static final String TAG_ADDEVENTTITILE = "add_event_title";
     public static final String TAG_SUBEVENT_NAME = "sub_event_name";
     public static final String TAG_SUBEVENT_PARTICIPANTS = "sub_event_participants";
@@ -48,6 +52,22 @@ public class Constants {
     public static final int EDIT_EVENT_REQ_CODE = 250;
     public static final int EVENT_EDITED = 350;
 
+    public static final String BASE_URL = "http://jvoc-sports-corner-db.16mb.com/";
+    public static final String URL_GETALLEVENTS = BASE_URL + "get_all_events.php";
+
+    public static final String TAG_JSON_EVENTS = "events";
+    public static final String TAG_JSON_SUCCESS = "success";
+    public static final String TAG_JSON_EVENTNAME = "eventName";
+    public static final String TAG_JSON_STARTDATE = "startDate";
+    public static final String TAG_JSON_ENDDATE = "endDate";
+    public static final String TAG_JSON_STARTTIME = "startTime";
+    public static final String TAG_JSON_ENDTIME = "endTime";
+    public static final String TAG_JSON_VENUE = "venue";
+    public static final String TAG_JSON_NOOFPARTICIPANTS = "noOfParticipants";
+    public static final String TAG_JSON_ISNOTIFIED = "isNotified";
+    public static final String TAG_JSON_ISNOTIFIEDFORSCHEDULE = "isNotifiedforSchedule";
+
+
     private static String getMyCurrentDate() {
         Calendar myCalendar = Calendar.getInstance();
         String myFormat = "dd-MM-yyyy"; //In which you need put here
@@ -71,4 +91,38 @@ public class Constants {
         return dispHour + ":" + dispMinute + " " + am_pm;
     }
 
+    public static String reversedate(String date) {
+        String parts[] = date.split("-");
+        String year = parts[0];
+        String month = parts[1];
+        String day = parts[2];
+        System.out.println(day + "-" + month + "-" + year);
+        return day + "-" + month + "-" + year;
+    }
+
+
+    public static String getSpecificTime(String time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        Date date = null;
+        try {
+            date = sdf.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar myCalendar = Calendar.getInstance();
+        myCalendar.setTime(date);   // assigns calendar to given date
+        int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
+        int minute = myCalendar.get(Calendar.MINUTE);
+        int format = myCalendar.get(Calendar.AM_PM);
+
+        String dispHour = String.valueOf(hour), dispMinute = String.valueOf(minute);
+
+        if( hour > 12 )     hour -= 12;
+        if (hour < 10)      dispHour = "0" + hour;
+        if (minute < 10)    dispMinute = "0" + minute;
+        String am_pm = (format == 0) ? "AM" : "PM";
+        System.out.println(dispHour + ":" + dispMinute + " " + am_pm);
+        return dispHour + ":" + dispMinute + " " + am_pm;
+    }
 }
